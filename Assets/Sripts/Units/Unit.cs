@@ -100,13 +100,8 @@ public abstract class Unit : MonoBehaviour
 
     public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
-        if (_animatorFireBull != null)
-        {
-            Debug.Log("Animation");
-            _animatorFireBull.SetBool("Run", true);
-            AudioManager.Instance.PlaySFX("course_taureau");
-            AudioManager.Instance.PlaySFX("feu_taureau");
-        }
+
+
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
@@ -120,15 +115,40 @@ public abstract class Unit : MonoBehaviour
         }
         transform.position = endPosition;
 
-        if (_animatorFireBull != null)
-        {
-            Debug.Log("Animation");
-            _animatorFireBull.SetBool("Run", false);
-            AudioManager.Instance.StopSFX();
-            AudioManager.Instance.StopSFXLoop();
-        }
+
 
         MovementFinished?.Invoke(this);
+
+        //PlayStopBullSounds(false);
+
+    }
+
+
+    public void PlayStopBullSounds(bool isPlay)
+    {
+
+        if (isPlay)
+        {
+            if (_animatorFireBull != null)
+            {
+
+                Debug.Log("Debut Animation");
+                _animatorFireBull.SetBool("Run", true);
+                AudioManager.Instance.PlayLoopSFX("course_taureau");
+                AudioManager.Instance.PlaySFX("feu_taureau");
+            }
+        }
+        else
+        {
+            if (_animatorFireBull != null)
+            {
+                Debug.Log("Fin Animation");
+                _animatorFireBull.SetBool("Run", false);
+                AudioManager.Instance.StopSFX();
+                AudioManager.Instance.StopSFXLoop();
+            }
+        }
+
         
     }
 }

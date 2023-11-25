@@ -40,7 +40,7 @@ public class FireBull : Unit
     public void HideIndicator()
     {
         exclamationMark.SetActive(false);
-        if (AudioManager.Instance != null) AudioManager.Instance.PlayLoopSFX("idle_taureau");
+        
     }
 
     public override void Tick()
@@ -68,9 +68,12 @@ public class FireBull : Unit
                     coords += new Vector3Int(-1, 0, 0);
                     break;
             }
-
+            //if (AudioManager.Instance != null) AudioManager.Instance.PlayLoopSFX("course_taureau");
+            //if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("feu_taureau");
             movementSystem.MoveEntity(this,coords);
             isEnraged = false;
+            
+
             return;
         }
         ApplyEffectOnNeighbor();

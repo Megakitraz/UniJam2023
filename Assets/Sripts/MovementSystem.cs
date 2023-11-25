@@ -123,9 +123,13 @@ public class MovementSystem : MonoBehaviour
 
     public void MoveEntity(Unit unit, Vector3Int destTilePos)
     {
+        
+
         Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
         if (grid.GetTileAt(destTilePos) != null)
         {
+            unit.PlayStopBullSounds(true);
+
             Tile destTile = grid.GetTileAt(destTilePos);
             unit.tileOn.unit = null;
             unit.tileOn = destTile;
@@ -135,7 +139,11 @@ public class MovementSystem : MonoBehaviour
             if (unit.GetComponent<FireBull>() != null)
             {
                 var target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
-                if (target == null) return;
+                if (target == null)
+                {
+                    unit.PlayStopBullSounds(false);
+                    return;
+                }
                 while (target.IsReachable())
                 {   
                     unit.tileOn.unit = null;
@@ -146,8 +154,14 @@ public class MovementSystem : MonoBehaviour
                     target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
                     if (target == null) return;
                 }
+
+                unit.PlayStopBullSounds(false);
             }
+
+            
         }
+
+        
     }
     
     public void TryMoveAnObstacle(Obstacle obstacle, Vector3Int destTilePos)

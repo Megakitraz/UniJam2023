@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            PlaySFX(_testNameSFX, false);
+            PlaySFX(_testNameSFX);
         }
     }
 
@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlaySFX(string name, bool loop)
+    public void PlaySFX(string name)
     {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
@@ -97,15 +97,7 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log("Play SFX");
-        if (loop)
-        {
-            sfxSource.clip = s.clip;
-            sfxSource.Play();
-        }
-        else
-        {
-            sfxSource.PlayOneShot(s.clip);
-        }
+        sfxSource.PlayOneShot(s.clip);
         
     }
 

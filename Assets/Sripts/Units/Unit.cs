@@ -105,6 +105,7 @@ public abstract class Unit : MonoBehaviour
             Debug.Log("Animation");
             _animatorFireBull.SetBool("Run", true);
             AudioManager.Instance.PlaySFX("course_taureau");
+            AudioManager.Instance.PlaySFX("feu_taureau");
         }
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
@@ -124,6 +125,7 @@ public abstract class Unit : MonoBehaviour
             Debug.Log("Animation");
             _animatorFireBull.SetBool("Run", false);
             AudioManager.Instance.StopSFX();
+            AudioManager.Instance.StopSFXLoop();
         }
 
         MovementFinished?.Invoke(this);

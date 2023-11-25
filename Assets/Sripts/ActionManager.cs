@@ -59,6 +59,7 @@ public class ActionManager : MonoBehaviour
         movementSystem.ShowPath(selectedTile.tileCoords);
         movementSystem.MoveUnit(selectedUnit);
         ClearOldSelection();
+        AudioManager.Instance.PlaySFX("clicktiles");
 
     }
 

@@ -7,7 +7,7 @@ public class Player : Unit
 {
     
     public event Action<Player> MovementFinished;
-
+    public Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,8 @@ public class Player : Unit
     
     public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
+        _animator.speed = 2;
+        _animator.SetBool("Walk", true);
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
@@ -37,6 +39,7 @@ public class Player : Unit
             transform.position = Vector3.Lerp(startPosition, endPosition, step);
             yield return null;
         }
+        _animator.SetBool("Walk", false);
         transform.position = endPosition;
         MovementFinished?.Invoke(this);
         GameManager.Instance.StartTurn();

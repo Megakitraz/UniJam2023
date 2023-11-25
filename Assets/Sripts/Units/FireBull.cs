@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class FireBull : Unit
 {
-
+    
     private bool isEnraged = false;
     [SerializeField] private Direction direction;
-    [SerializeField] GameObject exclamationMark;
+    [SerializeField] private GameObject exclamationMark;
+
+
+
+
     
     // Start is called before the first frame update
     void Start()

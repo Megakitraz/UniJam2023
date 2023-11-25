@@ -21,7 +21,7 @@ public class GraphSearch
             Vector3Int currentNode = nodesToVisit.Dequeue();
             foreach (Vector3Int neighborPosition in grid.GetNeighborsFor(currentNode))
             {
-                if (grid.GetTileAt(neighborPosition).IsReachable())
+                if (grid.GetTileAt(neighborPosition).IsMovableOn(neighborPosition - currentNode))
                 {
                     int nodeCost = grid.GetTileAt(neighborPosition).GetCost();
                     int currentCost = costSoFar[currentNode];

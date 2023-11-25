@@ -2845,85 +2845,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2170221197272934428, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2170221197272934428, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: _testNameSFX
-      value: click1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 43b1a62584cede641bef527189e2d6e6, type: 3}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4a4f5937f13b449429881fee0b819f1b, type: 3}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[4].name
-      value: click1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 320385f4947d80349bf25155e2c12719, type: 3}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[5].name
-      value: click1_reverb
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 96bf31be01a3f184a963c1c5727ebffa, type: 3}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[6].name
-      value: click2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d73198a8d78fab442b3c241c809257c4, type: 3}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[7].name
-      value: click2_reverb
-      objectReference: {fileID: 0}
     - target: {fileID: 3694336025163683719, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
         type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4252016444157831202, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4252016444157831202, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4734064342848059545, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
         type: 3}

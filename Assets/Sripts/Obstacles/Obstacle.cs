@@ -43,6 +43,10 @@ abstract public class Obstacle : MonoBehaviour {
     
     public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
+        if(gameObject.TryGetComponent<Box>(out Box box))
+        {
+            AudioManager.Instance.PlayLoopSFX("push_crate");
+        }
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
@@ -55,7 +59,13 @@ abstract public class Obstacle : MonoBehaviour {
             yield return null;
         }
         transform.position = endPosition;
-        MovementFinished?.Invoke(this);  
+        MovementFinished?.Invoke(this);
+
+        if (gameObject.TryGetComponent<Box>(out box))
+        {
+            AudioManager.Instance.StopSFXLoop();
+        }
+
     }
 
 }

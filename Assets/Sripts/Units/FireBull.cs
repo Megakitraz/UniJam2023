@@ -35,7 +35,6 @@ public class FireBull : Unit
     public void ShowIndicator()
     {
         exclamationMark.SetActive(true);
-        if (AudioManager.Instance != null) AudioManager.Instance.StopSFXLoop();
     }
 
     public void HideIndicator()

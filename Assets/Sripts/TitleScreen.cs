@@ -13,6 +13,7 @@ public class TitleScreen : MonoBehaviour
     void Start()
     {
         DisplayTitleScreen();
+        AudioManager.Instance.PlayMusic("menu");
     }
 
     // Update is called once per frame

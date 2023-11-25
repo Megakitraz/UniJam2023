@@ -23,19 +23,40 @@ public class FireBull : Unit
 
     void ShowIndicator()
     {
-        exclamationMark.SetActive(true);
+        //exclamationMark.SetActive(true);
     }
 
     void HideIndicator()
     {
-        exclamationMark.SetActive(false);
+        //exclamationMark.SetActive(false);
     }
 
     public override void Tick()
     {
         if (isEnraged)
         {
-            // TODO move fireBull
+            Vector3Int coords = tileOn.tileCoordinates.GetCoords();
+
+            switch (direction)
+            {
+                case Direction.up:
+                    coords += new Vector3Int(0, 0, 1);
+                    break;
+
+                case Direction.right:
+                    coords += new Vector3Int(1, 0, 0);
+                    break;
+
+                case Direction.down:
+                    coords += new Vector3Int(0, 0, -1);
+                    break;
+
+                case Direction.left:
+                    coords += new Vector3Int(-1, 0, 0);
+                    break;
+            }
+
+            movementSystem.MoveEntity(this,coords);
             return;
         }
         ApplyEffectOnNeighbor();
@@ -48,7 +69,8 @@ public class FireBull : Unit
         foreach (var neighbor in neighbors)
         {
             Tile tile = tileGrid.GetTileAt(neighbor);
-            tile.ApplyHeat();
+            if(tile != null)
+                tile.ApplyHeat();
         }
     }
 

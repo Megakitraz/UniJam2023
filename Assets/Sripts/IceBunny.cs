@@ -32,7 +32,7 @@ public class IceBunny : Unit
 
     private void CheckPlayerVisibility()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void ApplyEffectOnNeighbor()

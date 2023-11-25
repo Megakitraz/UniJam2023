@@ -62,10 +62,10 @@ public class Tile : MonoBehaviour
     {
         if (unit != null)
             return false;
-        if (unit.GetType() == typeof(Player))
-        {
-            return true;
-        }
+        //if (unit.GetType() == typeof(Player))
+        //{
+            //return true;
+        //}
 
         return false;
     }

@@ -40,10 +40,9 @@ public class FireBull : Unit
         }
     }
 
-    private void CheckPlayerVisibility()
+    public void CheckPlayerVisibility()
     {
-        throw new System.NotImplementedException();
-        // TODO implement test to see if player is visible by the bull, and set facing dir accordingly
+        Debug.Log(IsPlayerVisible());
     }
 
     private bool IsPlayerVisible()

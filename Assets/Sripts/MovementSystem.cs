@@ -114,6 +114,7 @@ public class MovementSystem : MonoBehaviour
             unit.tileOn.unit = null;
             unit.tileOn = destTile;
             destTile.unit = unit;
+            unit.ApplyEffectOnNeighbor();
             StartCoroutine(unit.MovementCoroutine(destTile.transform.position));
             if (unit.GetComponent<FireBull>() != null)
             {
@@ -124,6 +125,7 @@ public class MovementSystem : MonoBehaviour
                     unit.tileOn.unit = null;
                     unit.tileOn = target;
                     target.unit = unit;
+                    unit.ApplyEffectOnNeighbor();
                     StartCoroutine(unit.MovementCoroutine(target.transform.position));
                     target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
                     if (target == null) return;

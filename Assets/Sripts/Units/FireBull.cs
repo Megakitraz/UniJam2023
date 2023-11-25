@@ -64,6 +64,7 @@ public class FireBull : Unit
 
 
             movementSystem.MoveEntity(this,coords);
+            isEnraged = false;
             return;
         }
         else
@@ -84,6 +85,7 @@ public class FireBull : Unit
             if(tile != null)
                 tile.ApplyHeat();
         }
+        tileOn.ApplyHeat();
     }
 
     public void CheckPlayerVisibility()
@@ -98,19 +100,19 @@ public class FireBull : Unit
         {
             isEnraged = true;
             direction = Direction.right;
-            StartCoroutine(RotationCoroutine(new Vector3Int(1,0,0)));
+            StartCoroutine(RotationCoroutine(new Vector3Int(0,0,-1)));
         }
         else if (LookAt(Direction.up))
         {
             isEnraged = true;
             direction = Direction.up;
-            StartCoroutine(RotationCoroutine(new Vector3Int(0, 0, 1)));
+            StartCoroutine(RotationCoroutine(new Vector3Int(1, 0, 0)));
         }
         else if (LookAt(Direction.down))
         {
             isEnraged = true;
             direction = Direction.down;
-            StartCoroutine(RotationCoroutine(new Vector3Int(0, 0, -1)));
+            StartCoroutine(RotationCoroutine(new Vector3Int(-1, 0, 0)));
         }
     }
 

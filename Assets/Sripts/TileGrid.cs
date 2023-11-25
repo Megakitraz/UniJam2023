@@ -174,8 +174,21 @@ public class TileGrid : MonoBehaviour
                 }
             }
         }
-    } 
+    }
 
+    public void Tick()
+    {
+        Debug.Log("Tick");
+        foreach (var unit in FindObjectsOfType<Unit>())
+        {
+            unit.Tick();
+        }
+
+        foreach (var obstacle in FindObjectsOfType<Obstacle>())
+        {
+            obstacle.Tick();
+        }
+    }
     public void SetupColumn ()
     {
         int exist = 0;
@@ -203,6 +216,7 @@ public class TileGrid : MonoBehaviour
         }
     } 
 }
+
 
 public static class Direction
 {

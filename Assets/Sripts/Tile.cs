@@ -60,7 +60,7 @@ public class Tile : MonoBehaviour
 
     public bool IsPlayerOnTile()
     {
-        if (unit != null)
+        if (unit == null)
             return false;
         if (unit.GetComponent<Player>() != null)
         {
@@ -128,6 +128,10 @@ public class Tile : MonoBehaviour
         highlight.ToggleGlow1(false);
         highlight.ToggleGlow2(false);
         highlight.ToggleGlow3(false);
+    }
+
+    public void Tick()
+    {
     }
     
 

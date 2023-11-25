@@ -9,32 +9,30 @@ using UnityEngine.UI;
 
 [SelectionBase]
 
-public class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
-    public int mp;  //moving points
-
-    public int maxMP; 
-
-    public float movSpeed;
-    public float rotSpeed;
-
     public Tile tileOn;
     public Vector3Int tileCoord;
+    protected TileGrid tileGrid;
+    
+    public float movSpeed;
+    public float rotSpeed;
     
     [SerializeField] private GlowHighlight glowHighlight;
-    private Queue<Vector3> pathPositions = new Queue<Vector3>();
-
     public event Action<Unit> MovementFinished;
 
     private void Awake()
     {
         glowHighlight = GetComponent<GlowHighlight>();
+        tileGrid = FindObjectOfType<TileGrid>();
     }
 
     private void Update()
     {
     }
 
+    public abstract void Tick();
+    protected abstract void ApplyEffectOnNeighbor();
 
     public void Select()
     {
@@ -46,14 +44,20 @@ public class Unit : MonoBehaviour
         glowHighlight.ToggleGlow1(false);
     }
 
-    internal void MoveThroughPath(List<Vector3> currentPath)
+    internal void Move(List<Vector3Int> currentPath)
     {
-        pathPositions = new Queue<Vector3>(currentPath);
-        foreach(Vector3 pos in pathPositions){
-            Debug.Log(pos);
+        foreach(Vector3Int pos in currentPath)
+        {
+            Tile tile = tileGrid.GetTileAt(pos);
+            if (!tile.IsReachable())
+            {
+                
+                break;
+            }
+            tileCoord = pos;
+            ApplyEffectOnNeighbor();
         }
-        Vector3 firstTarget = pathPositions.Dequeue();
-        StartCoroutine(RotationCoroutine(firstTarget));
+        StartCoroutine(RotationCoroutine(tileCoord));
     }
 
     private IEnumerator RotationCoroutine(Vector3 endPosition)
@@ -93,21 +97,8 @@ public class Unit : MonoBehaviour
             yield return null;
         }
         transform.position = endPosition;
-
-        if (pathPositions.Count > 0)
-        {
-            StartCoroutine(RotationCoroutine(pathPositions.Dequeue()));
-        }
-        else
-        {
-            MovementFinished?.Invoke(this);
-            RefillMP(); //A BOUGER DANS L'EVENT
-        }
-    }
-
-    private void RefillMP()
-    {
-        mp = maxMP;
+        MovementFinished?.Invoke(this);
+        
     }
 }
 

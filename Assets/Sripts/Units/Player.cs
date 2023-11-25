@@ -7,7 +7,7 @@ public class Player : Unit
 {
     
     public event Action<Player> MovementFinished;
-
+    public Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +23,33 @@ public class Player : Unit
 
     public override void Tick() {}
     public override void ApplyEffectOnNeighbor() {}
-    
+
+    public IEnumerator RotationCoroutine(Vector3 endPosition)
+    {
+        Quaternion startRotation = transform.rotation;
+        endPosition.y = transform.position.y;
+        Vector3 direction = endPosition - transform.position;
+        Quaternion endRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        if (Mathf.Approximately(Math.Abs(Quaternion.Dot(startRotation, endRotation)), 1.0f) == false)
+        {
+            float timeElapsed = 0;
+            float rotationDuration = 1f / rotSpeed;
+            while (timeElapsed < rotationDuration)
+            {
+                timeElapsed += Time.deltaTime;
+                float step = timeElapsed / rotationDuration;
+                transform.rotation = Quaternion.Lerp(startRotation, endRotation, step);
+                yield return null;
+            }
+            transform.rotation = endRotation;
+        }
+        StartCoroutine(MovementCoroutine(endPosition));
+    }
     public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
+        _animator.speed = 2;
+        _animator.SetBool("Walk", true);
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
@@ -37,6 +61,7 @@ public class Player : Unit
             transform.position = Vector3.Lerp(startPosition, endPosition, step);
             yield return null;
         }
+        _animator.SetBool("Walk", false);
         transform.position = endPosition;
         MovementFinished?.Invoke(this);
         GameManager.Instance.StartTurn();

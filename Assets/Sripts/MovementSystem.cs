@@ -76,7 +76,7 @@ public class MovementSystem : MonoBehaviour
                 {
                     TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
                 }
-        StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+        StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
         grid.Tick();
         while (unit.tileOn.IsSlippery())
         { 

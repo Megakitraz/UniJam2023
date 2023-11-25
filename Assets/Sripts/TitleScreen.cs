@@ -40,11 +40,11 @@ public class TitleScreen : MonoBehaviour
     public void Quit()
     {
     #if (UNITY_EDITOR)
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
     #elif (UNITY_STANDALONE)
-    Application.Quit();
+        Application.Quit();
     #elif (UNITY_WEBGL)
-    Application.ExternalEval("window.close();");
+        Application.ExternalEval("window.close();");
     #endif
     }
 }

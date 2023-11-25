@@ -9,7 +9,7 @@ public class IceBlock : Obstacle
         if (tileOn.groundtype == Groundtype.Normal)
             tileOn.groundtype = Groundtype.Soaked;
         tileOn.obstacle = null;
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public override void ApplyCold() {}

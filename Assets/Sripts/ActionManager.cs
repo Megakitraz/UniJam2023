@@ -52,7 +52,7 @@ public class ActionManager : MonoBehaviour
         
         if (HandleTileOutOfRange(selectedTile.tileCoords) || HandleSelectedTileIsUnitTile(selectedTile))
         {
-            ClearOldSelection();
+            //ClearOldSelection();
             return;
         }
         //HandleTargetTileSelected(selectedTile);
@@ -105,8 +105,8 @@ public class ActionManager : MonoBehaviour
     {
         if(selectedTile.unit != null)
         {
-            selectedUnit.Deselect();
-            ClearOldSelection();
+            //selectedUnit.Deselect();
+            //ClearOldSelection();
             return true;
         }
         return false;

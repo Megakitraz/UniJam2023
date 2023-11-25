@@ -303,12 +303,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds:
-  - name: BackGround_Gameplay
+  - name: music1.3
     clip: {fileID: 8300000, guid: d4a163c77755ef745aff299dc2f0a77d, type: 3}
+  - name: music2
+    clip: {fileID: 8300000, guid: af15b8ebcb3478a4b9ee8253e042058d, type: 3}
   sfxSounds:
-  - name: randomSound
-    clip: {fileID: 8300000, guid: eed0bb0e803d88d48bfbdcbe37ec5623, type: 3}
+  - name: feu_taureau
+    clip: {fileID: 8300000, guid: 88995a28dc5722b4b909389a6bcfeed3, type: 3}
+  - name: feu_vegetation
+    clip: {fileID: 8300000, guid: 706f4a946c023404cac32d84e82e21f7, type: 3}
+  - name: course_taureau
+    clip: {fileID: 8300000, guid: b1730f4f92e9f46418c431ac40895dc0, type: 3}
+  - name: idle_taureau
+    clip: {fileID: 8300000, guid: 15afb1a429ba8a643a71f54af63a9cde, type: 3}
   musicSource: {fileID: 2170221197272934428}
   sfxSource: {fileID: 4252016444157831202}
-  _testNameMusic: BackGround_Gameplay
-  _testNameSFX: randomSound
+  _testNameMusic: music1.3
+  _testNameSFX: feu_taureau

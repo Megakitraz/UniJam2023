@@ -18,6 +18,8 @@ public abstract class Unit : MonoBehaviour
     public Tile tileOn;
     public Vector3Int tileCoord;
     protected TileGrid tileGrid;
+
+    protected MovementSystem movementSystem;
     
     public float movSpeed;
     public float rotSpeed;
@@ -33,6 +35,7 @@ public abstract class Unit : MonoBehaviour
     {
         if (tileOn != null)
             tileOn.unit = this;
+        movementSystem = FindObjectOfType<MovementSystem>();
         glowHighlight = GetComponent<GlowHighlight>();
         tileGrid = FindObjectOfType<TileGrid>();
     }
@@ -42,7 +45,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     public abstract void Tick();
-    protected abstract void ApplyEffectOnNeighbor();
+    public abstract void ApplyEffectOnNeighbor();
 
     public void Select()
     {

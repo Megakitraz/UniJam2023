@@ -18,5 +18,5 @@ public class Player : Unit
     
 
     public override void Tick() {}
-    protected override void ApplyEffectOnNeighbor() {}
+    public override void ApplyEffectOnNeighbor() {}
 }

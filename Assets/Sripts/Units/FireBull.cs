@@ -12,7 +12,9 @@ public class FireBull : Unit
     // Start is called before the first frame update
     void Start()
     {
+        //if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("idle_taureau", true);
         HideIndicator();
+        
     }
 
     // Update is called once per frame
@@ -62,6 +64,7 @@ public class FireBull : Unit
         }
         ApplyEffectOnNeighbor();
         CheckPlayerVisibility();
+        //if(AudioManager.Instance != null) AudioManager.Instance.PlaySFX("idle_taureau", true);
     }
 
     public override void ApplyEffectOnNeighbor()

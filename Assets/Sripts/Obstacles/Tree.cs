@@ -24,12 +24,15 @@ public class Tree : Obstacle
     {
         if (isBurning)
         {
-            var neighbors = tileGrid.GetNeighborsFor(tileCoord);
+            var neighbors = tileGrid.GetNeighborsFor(tileOn.tileCoords);
             foreach (var neighbor in neighbors)
             {
                 Tile tile = tileGrid.GetTileAt(neighbor);
-                //tile.ApplyHeat();
+                tile.ApplyHeat();
             }
+
+            tileOn.obstacle = null;
+            
             // TODO remove tree
         }
     }

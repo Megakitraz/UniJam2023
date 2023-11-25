@@ -31,6 +31,8 @@ public abstract class Unit : MonoBehaviour
 
     private void Awake()
     {
+        if (tileOn != null)
+            tileOn.unit = this;
         glowHighlight = GetComponent<GlowHighlight>();
         tileGrid = FindObjectOfType<TileGrid>();
     }
@@ -87,7 +89,7 @@ public abstract class Unit : MonoBehaviour
         StartCoroutine(MovementCoroutine(endPosition));
     }
 
-    private IEnumerator MovementCoroutine(Vector3 endPosition)
+    public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;

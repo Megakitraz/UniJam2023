@@ -493,23 +493,11 @@ MonoBehaviour:
   mainCamera: {fileID: 330585545}
   selectionMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 64
   grid: {fileID: 17963280}
   UnitSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1577670675}
-        m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
-        m_MethodName: HandleUnitSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   TileSelected:
     m_PersistentCalls:
       m_Calls:
@@ -619,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 330585545}
-  player: {fileID: 0}
+  player: {fileID: 2072725154}
   actionManager: {fileID: 1577670675}
   movementSystem: {fileID: 1919334055}
 --- !u!4 &939490389
@@ -872,7 +860,7 @@ MonoBehaviour:
   maxMP: 1
   tileOn: {fileID: 31921864}
   tileCoord: {x: 0, y: 0, z: 0}
-  movSpeed: 1.5
+  movSpeed: 2
   rotSpeed: 5
   glowHighlight: {fileID: 2072725153}
 --- !u!1001 &8430882582345252442

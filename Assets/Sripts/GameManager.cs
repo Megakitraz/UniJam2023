@@ -28,13 +28,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //StartTurn();
+        StartTurn();
     }
 
     void StartTurn()
     {
-        movementSystem.ShowRange(player);
-
+        actionManager.HandleUnitSelected(player.gameObject);
     }   
 
 }

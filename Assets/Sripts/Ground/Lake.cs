@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Unit
+public class Lake : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,8 +15,4 @@ public class Player : Unit
     {
         
     }
-    
-
-    public override void Tick() {}
-    protected override void ApplyEffectOnNeighbor() {}
 }

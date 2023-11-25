@@ -9,24 +9,50 @@ using UnityEngine.UI;
 
 [SelectionBase]
 
-public class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
     public int mp;  //moving points
 
     public int maxMP; 
-
-    public float movSpeed;
-    public float rotSpeed;
-
+    
     public Tile tileOn;
     public Vector3Int tileCoord;
+    protected TileGrid tileGrid;
     
-    protected Queue<Vector3> pathPositions = new Queue<Vector3>();
+    public float movSpeed;
+    public float rotSpeed;
+    
+    
+    
+    [SerializeField] private GlowHighlight glowHighlight;
+    private Queue<Vector3> pathPositions = new Queue<Vector3>();
 
     public event Action<Unit> MovementFinished;
 
-    
+    private void Awake()
+    {
+        glowHighlight = GetComponent<GlowHighlight>();
+        tileGrid = FindObjectOfType<TileGrid>();
+    }
 
+    private void Update()
+    {
+    }
+
+    public abstract void Tick();
+    protected abstract void ApplyEffectOnNeighbor();
+
+    public void Select()
+    {
+        glowHighlight.ToggleGlow1(true);
+    }
+
+    public void Deselect()
+    {
+        glowHighlight.ToggleGlow1(false);
+    }
+    
+    
     internal void MoveThroughPath(List<Vector3> currentPath)
     {
         pathPositions = new Queue<Vector3>(currentPath);
@@ -36,6 +62,7 @@ public class Unit : MonoBehaviour
         Vector3 firstTarget = pathPositions.Dequeue();
         StartCoroutine(RotationCoroutine(firstTarget));
     }
+    
 
     private IEnumerator RotationCoroutine(Vector3 endPosition)
     {
@@ -74,21 +101,8 @@ public class Unit : MonoBehaviour
             yield return null;
         }
         transform.position = endPosition;
-
-        if (pathPositions.Count > 0)
-        {
-            StartCoroutine(RotationCoroutine(pathPositions.Dequeue()));
-        }
-        else
-        {
-            MovementFinished?.Invoke(this);
-            RefillMP(); //A BOUGER DANS L'EVENT
-        }
-    }
-
-    private void RefillMP()
-    {
-        mp = maxMP;
+        MovementFinished?.Invoke(this);
+        
     }
 }
 

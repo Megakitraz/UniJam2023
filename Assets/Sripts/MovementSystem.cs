@@ -16,8 +16,6 @@ public class MovementSystem : MonoBehaviour
     [SerializeField]
     public Unit player;
 
-
-
    public void HideRange()
     {
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
@@ -32,7 +30,11 @@ public class MovementSystem : MonoBehaviour
         CalculateRange(unit);
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
         {   
-            grid.GetTileAt(tilePosition).EnableHighlight1();
+            Tile tile = grid.GetTileAt(tilePosition);
+            if (unit.tileOn != tile)
+            {
+                 tile.EnableHighlight1();
+            }
         }
     }
 
@@ -57,7 +59,7 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
-    public void MoveUnit(Unit unit)
+    public void MoveUnit(Player unit)
     {
         unit.tileOn.unit = null;
         Vector3Int endOfPath = currentPath[currentPath.Count -1];
@@ -66,7 +68,6 @@ public class MovementSystem : MonoBehaviour
         unit.tileCoord= endOfPath;
         ConvertPath(currentPath);
         unit.MoveThroughPath(worldPath);
-        unit.mp -= pathCost;
     }
 
 
@@ -82,5 +83,17 @@ public class MovementSystem : MonoBehaviour
         {
             worldPath.Add(grid.GetTileAt(tileOn).transform.position);
         }
+    }
+
+    private void TryMoveAnObstacle(Obstacle obstacle, Vector3Int destTilePos)
+    {
+        if (grid.GetTileAt(destTilePos) != null)
+        {
+            Tile destTile = grid.GetTileAt(destTilePos);
+            obstacle.tileOn.obstacle = null;
+            destTile.obstacle = obstacle;
+            StartCoroutine(obstacle.MovementCoroutine(destTile.transform.position));
+        }
+
     }
 }

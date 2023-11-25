@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour
     [SerializeField]
     private GlowHighlight highlight;
 
-    private TileCoordinates tileCoordinates;
+    public TileCoordinates tileCoordinates;
 
     [SerializeField]
     public int tileCost;
@@ -25,8 +25,11 @@ public class Tile : MonoBehaviour
         get => _groundtype;
         set
         {
-            _groundtype = value;
-            UpdateGroundModel();
+            if (_groundtype != value)
+            {
+                _groundtype = value;
+                UpdateGroundModel();
+            }
         }
     }
 
@@ -60,9 +63,11 @@ public class Tile : MonoBehaviour
 
     public bool IsPlayerOnTile()
     {
-        if (unit != null)
+        if (unit == null)
+        {
             return false;
-        if (unit.GetType() == typeof(Player))
+        }   
+        if (unit.GetComponent<Player>() != null)
         {
             return true;
         }
@@ -133,7 +138,7 @@ public class Tile : MonoBehaviour
 
     public void ApplyHeat()
     {
-            groundtype = GroundManager.ApplyHeat(groundtype);
+        groundtype = GroundManager.ApplyHeat(groundtype);
         if(obstacle != null)
             obstacle.ApplyHeat();
     }

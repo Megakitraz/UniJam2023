@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovementSystem : MonoBehaviour
@@ -31,10 +32,14 @@ public class MovementSystem : MonoBehaviour
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
         {   
             Tile tile = grid.GetTileAt(tilePosition);
-            if (unit.tileOn != tile && tile.IsReachable())
+
+            Debug.Log(tile.tileCoords + "is Reachable");
+            if (unit.tileOn != tile)
             {
+                if(tile.IsReachable())
                  tile.EnableHighlight1();
             }
+            
         }
     }
 
@@ -63,11 +68,26 @@ public class MovementSystem : MonoBehaviour
     {
         unit.tileOn.unit = null;
         Vector3Int endOfPath = currentPath[currentPath.Count -1];
+        Vector3Int dir = endOfPath - unit.tileOn.tileCoords;
         grid.GetTileAt(endOfPath).unit = unit;
         unit.tileOn = grid.GetTileAt(endOfPath);
-        unit.tileCoord= endOfPath;
-        ConvertPath(currentPath);
-        unit.MoveThroughPath(worldPath);
+        StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+        grid.Tick();
+        unit.tileCoord=endOfPath;
+        while (unit.tileOn.IsSlippery())
+        { 
+            Tile target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+            if (target == null) break;
+            if (target.IsReachable())
+            {
+                unit.tileOn.unit = null;
+                unit.tileOn = target;
+                unit.tileOn.unit = unit;
+                StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+                grid.Tick();
+            }
+        }
+        GameManager.Instance.StartTurn();
     }
 
 
@@ -85,6 +105,33 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
+    public void MoveEntity(Unit unit, Vector3Int destTilePos)
+    {
+        Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
+        if (grid.GetTileAt(destTilePos) != null)
+        {
+            Tile destTile = grid.GetTileAt(destTilePos);
+            unit.tileOn.unit = null;
+            unit.tileOn = destTile;
+            destTile.unit = unit;
+            StartCoroutine(unit.MovementCoroutine(destTile.transform.position));
+            if (unit.GetComponent<FireBull>() != null)
+            {
+                var target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+                if (target == null) return;
+                while (target.IsReachable())
+                {   
+                    unit.tileOn.unit = null;
+                    unit.tileOn = target;
+                    target.unit = unit;
+                    StartCoroutine(unit.MovementCoroutine(target.transform.position));
+                    target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+                    if (target == null) return;
+                }
+            }
+        }
+    }
+    
     public void TryMoveAnObstacle(Obstacle obstacle, Vector3Int destTilePos)
     {
         if (grid.GetTileAt(destTilePos) != null)

@@ -7,11 +7,12 @@ public class FireBull : Unit
     
     private bool isEnraged = false;
     [SerializeField] private Direction direction;
+    private GameObject exclamationMark;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        HideIndicator();
     }
 
     // Update is called once per frame
@@ -20,23 +21,56 @@ public class FireBull : Unit
         
     }
 
+    void ShowIndicator()
+    {
+        //exclamationMark.SetActive(true);
+    }
+
+    void HideIndicator()
+    {
+        //exclamationMark.SetActive(false);
+    }
+
     public override void Tick()
     {
         if (isEnraged)
         {
-            // TODO move fireBull
+            Vector3Int coords = tileOn.tileCoordinates.GetCoords();
+
+            switch (direction)
+            {
+                case Direction.up:
+                    coords += new Vector3Int(0, 0, 1);
+                    break;
+
+                case Direction.right:
+                    coords += new Vector3Int(1, 0, 0);
+                    break;
+
+                case Direction.down:
+                    coords += new Vector3Int(0, 0, -1);
+                    break;
+
+                case Direction.left:
+                    coords += new Vector3Int(-1, 0, 0);
+                    break;
+            }
+
+            movementSystem.MoveEntity(this,coords);
             return;
         }
+        ApplyEffectOnNeighbor();
         CheckPlayerVisibility();
     }
 
-    protected override void ApplyEffectOnNeighbor()
+    public override void ApplyEffectOnNeighbor()
     {
         var neighbors= tileGrid.GetNeighborsFor(tileCoord);
         foreach (var neighbor in neighbors)
         {
             Tile tile = tileGrid.GetTileAt(neighbor);
-            //TODO tile.ApplyHeat();
+            if(tile != null)
+                tile.ApplyHeat();
         }
     }
 
@@ -47,7 +81,7 @@ public class FireBull : Unit
 
     private bool IsPlayerVisible()
     {
-        Vector3Int coords = tileCoord;
+        Vector3Int coords = tileOn.tileCoordinates.GetCoords();
         bool solved = false;
         while(!solved)
         {
@@ -73,6 +107,7 @@ public class FireBull : Unit
                 Debug.Log(":(");
             break;
             }
+            Debug.Log(coords);
             Tile tile = TileGrid.Instance.GetTileAt(coords);
             if (tile != null)
             {

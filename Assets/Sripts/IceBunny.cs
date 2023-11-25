@@ -32,10 +32,10 @@ public class IceBunny : Unit
 
     private void CheckPlayerVisibility()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
-    protected override void ApplyEffectOnNeighbor()
+    public override void ApplyEffectOnNeighbor()
     {
         var neighbors = tileGrid.GetNeighborsFor(tileCoord);
         foreach (var neighbor in neighbors)

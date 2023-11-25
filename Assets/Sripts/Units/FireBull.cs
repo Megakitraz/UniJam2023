@@ -7,12 +7,12 @@ public class FireBull : Unit
     
     private bool isEnraged = false;
     [SerializeField] private Direction direction;
-    private GameObject exclamationMark;
+    [SerializeField] private GameObject exclamationMark;
+
 
 
 
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,20 +27,21 @@ public class FireBull : Unit
         
     }
 
-    void ShowIndicator()
+    public void ShowIndicator()
     {
-        //exclamationMark.SetActive(true);
+        exclamationMark.SetActive(true);
     }
 
-    void HideIndicator()
+    public void HideIndicator()
     {
-        //exclamationMark.SetActive(false);
+        exclamationMark.SetActive(false);
     }
 
     public override void Tick()
     {
         if (isEnraged)
         {
+            HideIndicator();
             Vector3Int coords = tileOn.tileCoords;
 
             switch (direction)
@@ -61,10 +62,6 @@ public class FireBull : Unit
                     coords += new Vector3Int(-1, 0, 0);
                     break;
             }
-
-            
-
-
 
             movementSystem.MoveEntity(this,coords);
             isEnraged = false;
@@ -112,6 +109,11 @@ public class FireBull : Unit
             isEnraged = true;
             direction = Direction.down;
             StartCoroutine(RotationCoroutine(new Vector3Int(-1, 0, 0)));
+        }
+
+        if (isEnraged)
+        {
+            ShowIndicator();
         }
     }
 

@@ -15,12 +15,7 @@ public class Player : Unit
     {
         
     }
-
-    public void MovePlayer(Vector3Int pos)
-    {
-        var path = new List<Vector3Int> { pos };
-        Move(path);
-    }
+    
 
     public override void Tick() {}
     protected override void ApplyEffectOnNeighbor() {}

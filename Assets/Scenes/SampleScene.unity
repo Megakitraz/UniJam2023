@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 330585545}
-  player: {fileID: 2072725152}
+  player: {fileID: 0}
   actionManager: {fileID: 1577670675}
   movementSystem: {fileID: 1919334055}
 --- !u!4 &939490389
@@ -669,7 +669,7 @@ MonoBehaviour:
   tileGrid: {fileID: 17963280}
   gManager: {fileID: 939490388}
   movementSystem: {fileID: 1919334055}
-  player: {fileID: 2072725152}
+  player: {fileID: 0}
   selectedUnit: {fileID: 0}
 --- !u!4 &1577670676
 Transform:
@@ -718,7 +718,7 @@ MonoBehaviour:
   pathCost: 0
   gManager: {fileID: 939490388}
   grid: {fileID: 17963280}
-  player: {fileID: 2072725152}
+  player: {fileID: 0}
 --- !u!4 &1919334056
 Transform:
   m_ObjectHideFlags: 0
@@ -746,8 +746,8 @@ GameObject:
   - component: {fileID: 2072725150}
   - component: {fileID: 2072725149}
   - component: {fileID: 2072725148}
-  - component: {fileID: 2072725152}
   - component: {fileID: 2072725153}
+  - component: {fileID: 2072725154}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -841,25 +841,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2072725152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072725147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1741de894c3032c45b94dda20157a2f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mp: 1
-  maxMP: 1
-  movSpeed: 1.5
-  rotSpeed: 5
-  tileOn: {fileID: 31921864}
-  tileCoord: {x: 0, y: 0, z: 0}
-  glowHighlight: {fileID: 2072725153}
 --- !u!114 &2072725153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +856,25 @@ MonoBehaviour:
   glowMaterial1: {fileID: 2100000, guid: c5f498b025208fe4f8caa0c6be970d59, type: 2}
   glowMaterial2: {fileID: 2100000, guid: 50bc855c42ad787499fdd1ba8d2535a2, type: 2}
   glowMaterial3: {fileID: 2100000, guid: d10ca19b19ea48e45a5a6c7ec726e029, type: 2}
+--- !u!114 &2072725154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072725147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31dbea23d545672418cdb9d1323ee691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mp: 1
+  maxMP: 1
+  tileOn: {fileID: 31921864}
+  tileCoord: {x: 0, y: 0, z: 0}
+  movSpeed: 1.5
+  rotSpeed: 5
+  glowHighlight: {fileID: 2072725153}
 --- !u!1001 &8430882582345252442
 PrefabInstance:
   m_ObjectHideFlags: 0

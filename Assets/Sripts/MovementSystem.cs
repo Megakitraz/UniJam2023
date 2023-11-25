@@ -57,7 +57,7 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
-    public void MoveUnit(Unit unit)
+    public void MoveUnit(Player unit)
     {
         unit.tileOn.unit = null;
         Vector3Int endOfPath = currentPath[currentPath.Count -1];
@@ -66,7 +66,6 @@ public class MovementSystem : MonoBehaviour
         unit.tileCoord= endOfPath;
         ConvertPath(currentPath);
         unit.MoveThroughPath(worldPath);
-        unit.mp -= pathCost;
     }
 
 

@@ -11,6 +11,10 @@ using UnityEngine.UI;
 
 public abstract class Unit : MonoBehaviour
 {
+    public int mp;  //moving points
+
+    public int maxMP; 
+    
     public Tile tileOn;
     public Vector3Int tileCoord;
     protected TileGrid tileGrid;
@@ -18,7 +22,11 @@ public abstract class Unit : MonoBehaviour
     public float movSpeed;
     public float rotSpeed;
     
+    
+    
     [SerializeField] private GlowHighlight glowHighlight;
+    private Queue<Vector3> pathPositions = new Queue<Vector3>();
+
     public event Action<Unit> MovementFinished;
 
     private void Awake()
@@ -43,22 +51,18 @@ public abstract class Unit : MonoBehaviour
     {
         glowHighlight.ToggleGlow1(false);
     }
-
-    internal void Move(List<Vector3Int> currentPath)
+    
+    
+    internal void MoveThroughPath(List<Vector3> currentPath)
     {
-        foreach(Vector3Int pos in currentPath)
-        {
-            Tile tile = tileGrid.GetTileAt(pos);
-            if (!tile.IsReachable())
-            {
-                
-                break;
-            }
-            tileCoord = pos;
-            ApplyEffectOnNeighbor();
+        pathPositions = new Queue<Vector3>(currentPath);
+        foreach(Vector3 pos in pathPositions){
+            Debug.Log(pos);
         }
-        StartCoroutine(RotationCoroutine(tileCoord));
+        Vector3 firstTarget = pathPositions.Dequeue();
+        StartCoroutine(RotationCoroutine(firstTarget));
     }
+    
 
     private IEnumerator RotationCoroutine(Vector3 endPosition)
     {

@@ -19,12 +19,14 @@ public abstract class Unit : MonoBehaviour
     protected TileGrid tileGrid;
 
     protected MovementSystem movementSystem;
-    
+
+    [SerializeField] protected Animator _animatorFireBull;
+
     public float movSpeed;
     public float rotSpeed;
-    
-    
-    
+
+
+
     [SerializeField] private GlowHighlight glowHighlight;
     private Queue<Vector3> pathPositions = new Queue<Vector3>();
 
@@ -113,6 +115,12 @@ public abstract class Unit : MonoBehaviour
 
     public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
+        if (_animatorFireBull != null)
+        {
+            Debug.Log("Animation");
+            _animatorFireBull.SetBool("Run", true);
+            AudioManager.Instance.PlaySFX("course_taureau", true);
+        }
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
@@ -125,8 +133,15 @@ public abstract class Unit : MonoBehaviour
             yield return null;
         }
         transform.position = endPosition;
+
+        if (_animatorFireBull != null)
+        {
+            Debug.Log("Animation");
+            //_animatorFireBull.SetBool("Run", false);
+            //AudioManager.Instance.StopSFX();
+        }
+
         MovementFinished?.Invoke(this);
-        
     }
 }
 

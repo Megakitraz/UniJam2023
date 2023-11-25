@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class FireBull : Unit
 {
-    [SerializeField] private Animator _animatorFireBull;
+    
     private bool isEnraged = false;
     [SerializeField] private Direction direction;
     private GameObject exclamationMark;
+
+
+
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,18 +62,13 @@ public class FireBull : Unit
                     break;
             }
 
-            _animatorFireBull.SetBool("Run", true);
-            AudioManager.Instance.PlaySFX("course_taureau", true);
+            
 
 
 
             movementSystem.MoveEntity(this,coords);
             isEnraged = false;
             return;
-        }
-        else
-        {
-            _animatorFireBull.SetBool("Run", false);
         }
         ApplyEffectOnNeighbor();
         CheckPlayerVisibility();

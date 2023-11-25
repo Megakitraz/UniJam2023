@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class Lights : MonoBehaviour
 {
+    [SerializeField] Material material;
+    [SerializeField] float changeSpeed;
+    Color emissionColorValue;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        emissionColorValue = new Color(1f, 0.9953098f, 0.6735849f);
+        StartCoroutine(RandomInstensity());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private IEnumerator RandomInstensity(float moveSpeed)
+    private IEnumerator RandomInstensity()
     {
+        float intensity = 0.8f;
         while (true)
         {
-            float randomTarget = Random.Range(3f, 5f);
-            Vector3 direction = (randomTarget - transform.position).normalized;
+            float randomTarget = Random.Range(0.6f, 1f);
 
-            while (Vector3.Distance(transform.position, randomTarget) > .1)
+            while (Mathf.Abs(intensity - randomTarget) > .05)
             {
-                transform.position += direction * Time.fixedDeltaTime * moveSpeed;
+                intensity += (randomTarget-intensity) * Time.fixedDeltaTime;
+                material.SetVector("_EmissionColor", emissionColorValue * intensity);
                 yield return new WaitForFixedUpdate();
             }
         }

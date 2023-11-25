@@ -33,10 +33,9 @@ public class MovementSystem : MonoBehaviour
         {   
             Tile tile = grid.GetTileAt(tilePosition);
 
-            Debug.Log(tile.tileCoords + "is Reachable");
             if (unit.tileOn != tile)
             {
-                if(tile.IsReachable())
+                if(tile.IsMovableOn(tile.tileCoords - unit.tileOn.tileCoords))
                  tile.EnableHighlight1();
             }
             
@@ -66,23 +65,34 @@ public class MovementSystem : MonoBehaviour
 
     public void MoveUnit(Player unit)
     {
+        Vector3Int baseCoord = unit.tileOn.tileCoords;
         unit.tileOn.unit = null;
         Vector3Int endOfPath = currentPath[currentPath.Count - 1];
         Vector3Int dir = endOfPath - unit.tileOn.tileCoords;
         grid.GetTileAt(endOfPath).unit = unit;
-        unit.tileOn = grid.GetTileAt(endOfPath);
-        StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+        Tile target = grid.GetTileAt(endOfPath);
+        unit.tileOn = target;
+        if (target.obstacle != null)
+                {
+                    TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
+                }
+        StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
         grid.Tick();
         while (unit.tileOn.IsSlippery())
         { 
-            Tile target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+            target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
             if (target == null) break;
-            if (target.IsReachable())
+            if (target.IsMovableOn(target.tileCoords - unit.tileOn.tileCoords))
             {
+                baseCoord = unit.tileOn.tileCoords;
                 unit.tileOn.unit = null;
                 unit.tileOn = target;
                 unit.tileOn.unit = unit;
                 StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+                if (target.obstacle != null)
+                {
+                    TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
+                }
                 grid.Tick();
             }
         }
@@ -141,6 +151,7 @@ public class MovementSystem : MonoBehaviour
             Tile destTile = grid.GetTileAt(destTilePos);
             if (destTile.IsReachable())
             {
+                Debug.Log("yyyyyy");
                 obstacle.tileOn.obstacle = null;
                 obstacle.tileOn = destTile;
                 destTile.obstacle = obstacle;

@@ -25,8 +25,11 @@ public class Tile : MonoBehaviour
         get => _groundtype;
         set
         {
-            _groundtype = value;
-            UpdateGroundModel();
+            if (_groundtype != value)
+            {
+                _groundtype = value;
+                UpdateGroundModel();
+            }
         }
     }
 
@@ -135,7 +138,7 @@ public class Tile : MonoBehaviour
 
     public void ApplyHeat()
     {
-            groundtype = GroundManager.ApplyHeat(groundtype);
+        groundtype = GroundManager.ApplyHeat(groundtype);
         if(obstacle != null)
             obstacle.ApplyHeat();
     }

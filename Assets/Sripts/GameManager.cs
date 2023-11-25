@@ -31,8 +31,9 @@ public class GameManager : MonoBehaviour
         StartTurn();
     }
 
-    void StartTurn()
+    public void StartTurn()
     {
+        Debug.Log("Start turn");
         actionManager.HandleUnitSelected(player.gameObject);
     }   
 

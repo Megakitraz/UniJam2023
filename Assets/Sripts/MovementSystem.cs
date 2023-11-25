@@ -71,7 +71,7 @@ public class MovementSystem : MonoBehaviour
         Vector3Int dir = endOfPath - unit.tileOn.tileCoords;
         grid.GetTileAt(endOfPath).unit = unit;
         unit.tileOn = grid.GetTileAt(endOfPath);
-        StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+        StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
         grid.Tick();
         while (unit.tileOn.IsSlippery())
         { 

@@ -82,7 +82,7 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log("Play Music");
-        musicSource.clip = musicSounds[0].clip;
+        musicSource.clip = s.clip;
         musicSource.Play();
     }
 
@@ -97,7 +97,7 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log("Play SFX");
-        sfxSource.PlayOneShot(sfxSounds[0].clip);
+        sfxSource.PlayOneShot(s.clip);
     }
 
     public void StopMusic()

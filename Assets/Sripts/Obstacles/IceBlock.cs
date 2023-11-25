@@ -16,6 +16,7 @@ public class IceBlock : Obstacle
 
     public override void ApplyPush(Vector3Int pushingDir)
     {
+        movementSystem.TryMoveAnObstacle(this, tileOn.tileCoords + pushingDir);
     }
 
     public override bool IsReachable()

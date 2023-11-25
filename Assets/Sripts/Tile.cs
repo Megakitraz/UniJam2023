@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.ComponentModel;
 using UnityEngine;
 
 [SelectionBase]
@@ -17,13 +18,14 @@ public class Tile : MonoBehaviour
 
     private TileGrid grid;
 
+    private Groundtype type;
 
-    [SerializeField] public Groundtype groundtype
+    public Groundtype groundtype
     {
-        get { return groundtype; }
+        get => _groundtype;
         set
         {
-            groundtype = value;
+            _groundtype = value;
             UpdateGroundModel();
         }
     }
@@ -39,6 +41,8 @@ public class Tile : MonoBehaviour
     [SerializeField]
     public Obstacle obstacle;
 
+    [SerializeField] private Groundtype _groundtype;
+
     public Vector3Int tileCoords => tileCoordinates.GetCoords();
 
     public int GetCost()
@@ -48,8 +52,10 @@ public class Tile : MonoBehaviour
 
     public bool IsReachable()
     {
-        return(true);
-        //prendre en compte le possible mur
+        if (obstacle != null || unit != null)
+            return false;
+        
+        return GroundManager.IsReachable(groundtype);
     }
 
 

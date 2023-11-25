@@ -31,7 +31,7 @@ public class MovementSystem : MonoBehaviour
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
         {   
             Tile tile = grid.GetTileAt(tilePosition);
-            if (unit.tileOn != tile)
+            if (unit.tileOn != tile && tile.IsReachable())
             {
                  tile.EnableHighlight1();
             }
@@ -85,7 +85,7 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
-    private void TryMoveAnObstacle(Obstacle obstacle, Vector3Int destTilePos)
+    public void TryMoveAnObstacle(Obstacle obstacle, Vector3Int destTilePos)
     {
         if (grid.GetTileAt(destTilePos) != null)
         {

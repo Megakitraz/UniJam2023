@@ -35,7 +35,9 @@ public class Tile : MonoBehaviour
 
     private void UpdateGroundModel()
     {
-        throw new NotImplementedException();
+        //ToDo Model en fonction de GroundType
+
+        //throw new NotImplementedException();
     }
 
     [SerializeField]

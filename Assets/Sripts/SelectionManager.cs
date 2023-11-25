@@ -31,7 +31,7 @@ public class SelectionManager : MonoBehaviour
             if (IsSelectedAnUnit(result))
             {
                 Debug.Log("unit");
-                UnitSelected?.Invoke(result);
+                //UnitSelected?.Invoke(result);
             }
             else if (IsSelectedATile(result))
             {

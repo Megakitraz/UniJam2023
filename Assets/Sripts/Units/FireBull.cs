@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireBull : Unit
 {
-    
+    [SerializeField] private Animator _animatorFireBull;
     private bool isEnraged = false;
     [SerializeField] private Direction direction;
     private GameObject exclamationMark;
@@ -58,8 +58,17 @@ public class FireBull : Unit
                     break;
             }
 
+            _animatorFireBull.SetBool("Run", true);
+            AudioManager.Instance.PlaySFX("course_taureau", true);
+
+
+
             movementSystem.MoveEntity(this,coords);
             return;
+        }
+        else
+        {
+            _animatorFireBull.SetBool("Run", false);
         }
         ApplyEffectOnNeighbor();
         CheckPlayerVisibility();

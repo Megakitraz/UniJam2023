@@ -75,6 +75,7 @@ public class GroundManager
         }
     }
 
+
     public static bool IsSlippery(Groundtype groundtype)
     {
         switch (groundtype)

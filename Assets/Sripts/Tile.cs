@@ -58,6 +58,17 @@ public class Tile : MonoBehaviour
         return GroundManager.IsReachable(groundtype);
     }
 
+    public bool IsPlayerOnTile()
+    {
+        if (unit != null)
+            return false;
+        if (unit.GetType() == typeof(Player))
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     private void Awake()
     {

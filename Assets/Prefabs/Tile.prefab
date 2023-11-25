@@ -62,10 +62,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 6870153384600968596}
+  tileCoordinates: {fileID: 5411378557531818437}
   tileCost: 1
-  obstacle: 0
   unit: {fileID: 0}
-  props: {fileID: 0}
+  obstacle: {fileID: 0}
+  _groundtype: 0
 --- !u!114 &6870153384600968596
 MonoBehaviour:
   m_ObjectHideFlags: 0

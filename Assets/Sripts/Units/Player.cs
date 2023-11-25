@@ -48,8 +48,11 @@ public class Player : Unit
     }
     public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
-        _animator.speed = 2;
-        _animator.SetBool("Walk", true);
+        if (_animator != null)
+        {
+            _animator.speed = 2;
+            _animator.SetBool("Walk", true);
+        }
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
@@ -61,7 +64,12 @@ public class Player : Unit
             transform.position = Vector3.Lerp(startPosition, endPosition, step);
             yield return null;
         }
-        _animator.SetBool("Walk", false);
+
+        if (_animator != null)
+        {
+            _animator.SetBool("Walk", false);
+        }
+
         transform.position = endPosition;
         MovementFinished?.Invoke(this);
         GameManager.Instance.StartTurn();

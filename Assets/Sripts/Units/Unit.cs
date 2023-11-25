@@ -109,7 +109,7 @@ public abstract class Unit : MonoBehaviour
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
-        float movementDuration = 1f / movSpeed;
+        float movementDuration = (endPosition - startPosition).magnitude * 1f / movSpeed;
         while (timeElapsed < movementDuration)
         {
             timeElapsed += Time.deltaTime;
@@ -127,6 +127,7 @@ public abstract class Unit : MonoBehaviour
         }
 
         MovementFinished?.Invoke(this);
+        
     }
 }
 

@@ -31,6 +31,8 @@ public abstract class Unit : MonoBehaviour
 
     private void Awake()
     {
+        if (tileOn != null)
+            tileOn.unit = this;
         glowHighlight = GetComponent<GlowHighlight>();
         tileGrid = FindObjectOfType<TileGrid>();
     }

@@ -17,6 +17,8 @@ abstract public class Obstacle : MonoBehaviour {
 
     private void Awake()
     {
+        if (tileOn != null)
+            tileOn.obstacle = this;
         movementSystem = FindObjectOfType<MovementSystem>();
         tileGrid = FindObjectOfType<TileGrid>();
     }

@@ -62,7 +62,7 @@ public class Tile : MonoBehaviour
     {
         if (unit != null)
             return false;
-        if (unit.GetType() == typeof(Player))
+        if (unit.GetComponent<Player>() != null)
         {
             return true;
         }
@@ -70,8 +70,17 @@ public class Tile : MonoBehaviour
         return false;
     }
 
+    public bool IsSlippery()
+    {
+        return GroundManager.IsSlippery(groundtype);
+    }
+
     private void Awake()
     {
+        if (obstacle != null)
+            obstacle.tileOn = this;
+        if (unit != null)
+            unit.tileOn = this;
         tileCoordinates = GetComponent<TileCoordinates>();
         grid = FindObjectsOfType<TileGrid>()[0];
     }

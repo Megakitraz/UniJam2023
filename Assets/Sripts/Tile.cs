@@ -62,16 +62,25 @@ public class Tile : MonoBehaviour
     {
         if (unit != null)
             return false;
-        //if (unit.GetType() == typeof(Player))
-        //{
-            //return true;
-        //}
+        if (unit.GetType() == typeof(Player))
+        {
+            return true;
+        }
 
         return false;
     }
 
+    public bool IsSlippery()
+    {
+        return GroundManager.IsSlippery(groundtype);
+    }
+
     private void Awake()
     {
+        if (obstacle != null)
+            obstacle.tileOn = this;
+        if (unit != null)
+            unit.tileOn = this;
         tileCoordinates = GetComponent<TileCoordinates>();
         grid = FindObjectsOfType<TileGrid>()[0];
     }

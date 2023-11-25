@@ -36,7 +36,7 @@ public class FireBull : Unit
         foreach (var neighbor in neighbors)
         {
             Tile tile = tileGrid.GetTileAt(neighbor);
-            //TODO tile.ApplyHeat();
+            tile.ApplyHeat();
         }
     }
 

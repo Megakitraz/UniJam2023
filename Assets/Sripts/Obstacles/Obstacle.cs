@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Obstacle : MonoBehaviour
-{
+
+
+abstract public class Obstacle : MonoBehaviour {
     public Tile tileOn;
-    public Vector3Int tileCoord;
     protected TileGrid tileGrid;
+    protected MovementSystem movementSystem;
     
     private Queue<Vector3> pathPositions = new Queue<Vector3>();
     public float movSpeed;
@@ -16,6 +17,7 @@ abstract public class Obstacle : MonoBehaviour
 
     private void Awake()
     {
+        movementSystem = FindObjectOfType<MovementSystem>();
         tileGrid = FindObjectOfType<TileGrid>();
     }
 

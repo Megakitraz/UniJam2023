@@ -6,14 +6,16 @@ public class IceBlock : Obstacle
 {
     public override void ApplyHeat()
     {
-        // TODO melt ice block
+        if (tileOn.groundtype == Groundtype.Normal)
+            tileOn.groundtype = Groundtype.Soaked;
+        tileOn.obstacle = null;
+        Destroy(this);
     }
 
     public override void ApplyCold() {}
 
     public override void ApplyPush(Vector3Int pushingDir)
     {
-        // TODO apply push
     }
 
     public override bool IsReachable()

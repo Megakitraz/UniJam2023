@@ -17,8 +17,21 @@ public class Tile : MonoBehaviour
 
     private TileGrid grid;
 
-    [SerializeField]
-    Ground ground;
+
+    [SerializeField] public Groundtype groundtype
+    {
+        get { return groundtype; }
+        set
+        {
+            groundtype = value;
+            UpdateGroundModel();
+        }
+    }
+
+    private void UpdateGroundModel()
+    {
+        throw new NotImplementedException();
+    }
 
     [SerializeField]
     public Unit unit;
@@ -91,6 +104,20 @@ public class Tile : MonoBehaviour
         highlight.ToggleGlow3(false);
     }
     
+
+    public void ApplyHeat()
+    {
+            groundtype = GroundManager.ApplyHeat(groundtype);
+        if(obstacle != null)
+            obstacle.ApplyHeat();
+    }
+
+    public void ApplyCold()
+    {
+        groundtype = GroundManager.ApplyCold(groundtype);
+        if(obstacle != null)
+            obstacle.ApplyCold();
+    }
 }
 
 

@@ -7,9 +7,8 @@ public class TileGrid : MonoBehaviour
 {
     Dictionary<Vector3Int, Tile> tileDict = new Dictionary<Vector3Int, Tile>();
     Dictionary<Vector3Int, List<Vector3Int>> tileNeighborsDict = new Dictionary<Vector3Int, List<Vector3Int>>();
-    List<List<Vector3Int>> tileRow = new List<List<Vector3Int>>(); //the horizontal ones
-    List<List<Vector3Int>> tileColumn = new List<List<Vector3Int>>(); //from the bottom right to the upper left
-
+    List<List<Vector3Int>> tileRow = new List<List<Vector3Int>>(); 
+    List<List<Vector3Int>> tileColumn = new List<List<Vector3Int>>(); 
 
 
     private void Start()
@@ -18,8 +17,6 @@ public class TileGrid : MonoBehaviour
         SetupNeighbors();
         SetupRow();
         SetupColumn();
-
-
     }
 
     public Tile GetTileAt(Vector3Int tileCoordinates)

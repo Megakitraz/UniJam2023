@@ -35,7 +35,7 @@ abstract public class Obstacle : MonoBehaviour
         StartCoroutine(MovementCoroutine(firstTarget));
     }
     
-    private IEnumerator MovementCoroutine(Vector3 endPosition)
+    public IEnumerator MovementCoroutine(Vector3 endPosition)
     {
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;

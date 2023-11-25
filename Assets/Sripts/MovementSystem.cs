@@ -16,8 +16,6 @@ public class MovementSystem : MonoBehaviour
     [SerializeField]
     public Unit player;
 
-
-
    public void HideRange()
     {
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
@@ -85,5 +83,17 @@ public class MovementSystem : MonoBehaviour
         {
             worldPath.Add(grid.GetTileAt(tileOn).transform.position);
         }
+    }
+
+    private void TryMoveAnObstacle(Obstacle obstacle, Vector3Int destTilePos)
+    {
+        if (grid.GetTileAt(destTilePos) != null)
+        {
+            Tile destTile = grid.GetTileAt(destTilePos);
+            obstacle.tileOn.obstacle = null;
+            destTile.obstacle = obstacle;
+            StartCoroutine(obstacle.MovementCoroutine(destTile.transform.position));
+        }
+
     }
 }

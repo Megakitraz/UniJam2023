@@ -33,7 +33,7 @@ public class ActionManager : MonoBehaviour
     {
         if (selectedUnit == unitReference)
         {
-            ClearOldSelection();
+            //ClearOldSelection();
             return true;
         }
         return false;
@@ -55,7 +55,12 @@ public class ActionManager : MonoBehaviour
             ClearOldSelection();
             return;
         }
-        HandleTargetTileSelected(selectedTile);
+        //HandleTargetTileSelected(selectedTile);
+        previouslySelectedTile = selectedTile;
+        movementSystem.ShowPath(selectedTile.tileCoords);
+        movementSystem.MoveUnit(selectedUnit);
+        ClearOldSelection();
+
     }
 
     public void PrepareUnitForMovement(Player unitReference)
@@ -69,7 +74,7 @@ public class ActionManager : MonoBehaviour
         movementSystem.ShowRange(selectedUnit);
     }
 
-    
+    //
     private void HandleTargetTileSelected(Tile selectedTile)
     {
         if(previouslySelectedTile == null ||previouslySelectedTile != selectedTile)

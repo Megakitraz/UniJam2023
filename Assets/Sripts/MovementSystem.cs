@@ -32,7 +32,11 @@ public class MovementSystem : MonoBehaviour
         CalculateRange(unit);
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
         {   
-            grid.GetTileAt(tilePosition).EnableHighlight1();
+            Tile tile = grid.GetTileAt(tilePosition);
+            if (unit.tileOn != tile)
+            {
+                 tile.EnableHighlight1();
+            }
         }
     }
 

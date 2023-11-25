@@ -35,7 +35,7 @@ public class IceBunny : Unit
         throw new System.NotImplementedException();
     }
 
-    protected override void ApplyEffectOnNeighbor()
+    public override void ApplyEffectOnNeighbor()
     {
         var neighbors = tileGrid.GetNeighborsFor(tileCoord);
         foreach (var neighbor in neighbors)

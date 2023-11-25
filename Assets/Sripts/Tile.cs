@@ -18,13 +18,13 @@ public class Tile : MonoBehaviour
     private TileGrid grid;
 
     [SerializeField]
-    private bool obstacle;
+    Ground ground;
 
     [SerializeField]
     public Unit unit;
 
     [SerializeField]
-    public GameObject props;
+    public Obstacle obstacle;
 
     public Vector3Int tileCoords => tileCoordinates.GetCoords();
 
@@ -93,11 +93,5 @@ public class Tile : MonoBehaviour
     
 }
 
-public struct CompositionTiles
-{
-    Ground ground;
-    Obstacle obstacle;
-    Unit entity;
 
-}
 

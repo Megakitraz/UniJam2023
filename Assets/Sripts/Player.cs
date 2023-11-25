@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Player : Unit
 {
-
-    private GlowHighlight glowHighlight;
-
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        glowHighlight = GetComponent<GlowHighlight>();
+        
     }
 
-    public void Select()
+    // Update is called once per frame
+    void Update()
     {
-        glowHighlight.ToggleGlow1(true);
+        
     }
+    
 
-    public void Deselect()
-    {
-        glowHighlight.ToggleGlow1(false);
-    }
+    public override void Tick() {}
+    protected override void ApplyEffectOnNeighbor() {}
 }

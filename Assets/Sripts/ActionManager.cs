@@ -7,8 +7,8 @@ public class ActionManager : MonoBehaviour
     public TileGrid tileGrid;
     [SerializeField] private GameManager gManager;
     [SerializeField] private MovementSystem movementSystem;
-    [SerializeField] public Unit player;
-    public Unit selectedUnit;
+    [SerializeField] public Player player;
+    public Player selectedUnit;
     private Tile previouslySelectedTile;
 
 
@@ -18,7 +18,7 @@ public class ActionManager : MonoBehaviour
         {
             return;
         }
-        Unit unitReference = unit.GetComponent<Unit>();
+        Player unitReference = unit.GetComponent<Player>();
         
         if (CheckIfTheSameUnitSelected(unitReference))
         {
@@ -58,7 +58,7 @@ public class ActionManager : MonoBehaviour
         HandleTargetTileSelected(selectedTile);
     }
 
-    public void PrepareUnitForMovement(Unit unitReference)
+    public void PrepareUnitForMovement(Player unitReference)
     {
         if (selectedUnit != null)
         {

@@ -93,3 +93,11 @@ public class Tile : MonoBehaviour
     
 }
 
+public struct CompositionTiles
+{
+    Ground ground;
+    Obstacle obstacle;
+    Unit entity;
+
+}
+

@@ -35,7 +35,7 @@ public class FireBull : Unit
     {
         if (isEnraged)
         {
-            Vector3Int coords = tileOn.tileCoordinates.GetCoords();
+            Vector3Int coords = tileOn.tileCoords;
 
             switch (direction)
             {
@@ -65,7 +65,7 @@ public class FireBull : Unit
 
     public override void ApplyEffectOnNeighbor()
     {
-        var neighbors= tileGrid.GetNeighborsFor(tileCoord);
+        var neighbors= tileGrid.GetNeighborsFor(tileOn.tileCoords);
         foreach (var neighbor in neighbors)
         {
             Tile tile = tileGrid.GetTileAt(neighbor);
@@ -76,16 +76,39 @@ public class FireBull : Unit
 
     public void CheckPlayerVisibility()
     {
-        Debug.Log(IsPlayerVisible());
+        if (LookAt(Direction.left))
+        {
+            isEnraged = true;
+            direction = Direction.left;
+            StartCoroutine(RotationCoroutine(new Vector3Int(0,0,1)));
+        }
+        else if (LookAt(Direction.right))
+        {
+            isEnraged = true;
+            direction = Direction.right;
+            StartCoroutine(RotationCoroutine(new Vector3Int(1,0,0)));
+        }
+        else if (LookAt(Direction.up))
+        {
+            isEnraged = true;
+            direction = Direction.up;
+            StartCoroutine(RotationCoroutine(new Vector3Int(0, 0, 1)));
+        }
+        else if (LookAt(Direction.down))
+        {
+            isEnraged = true;
+            direction = Direction.down;
+            StartCoroutine(RotationCoroutine(new Vector3Int(0, 0, -1)));
+        }
     }
 
-    private bool IsPlayerVisible()
+    private bool LookAt(Direction dir)
     {
         Vector3Int coords = tileOn.tileCoordinates.GetCoords();
         bool solved = false;
         while(!solved)
         {
-            switch(direction)
+            switch(dir)
             {
             case Direction.up:
                 coords += new Vector3Int(0,0,1);

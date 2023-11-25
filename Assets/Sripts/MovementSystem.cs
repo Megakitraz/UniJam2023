@@ -67,13 +67,12 @@ public class MovementSystem : MonoBehaviour
     public void MoveUnit(Player unit)
     {
         unit.tileOn.unit = null;
-        Vector3Int endOfPath = currentPath[currentPath.Count -1];
+        Vector3Int endOfPath = currentPath[currentPath.Count - 1];
         Vector3Int dir = endOfPath - unit.tileOn.tileCoords;
         grid.GetTileAt(endOfPath).unit = unit;
         unit.tileOn = grid.GetTileAt(endOfPath);
         StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
         grid.Tick();
-        unit.tileCoord=endOfPath;
         while (unit.tileOn.IsSlippery())
         { 
             Tile target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
@@ -89,6 +88,7 @@ public class MovementSystem : MonoBehaviour
         }
         GameManager.Instance.StartTurn();
     }
+    
 
 
     public bool IsTileInRange(Vector3Int tilePos)

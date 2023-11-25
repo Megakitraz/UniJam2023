@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour
 
     private void UpdateGroundModel()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     [SerializeField]

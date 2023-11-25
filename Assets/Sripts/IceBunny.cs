@@ -37,7 +37,7 @@ public class IceBunny : Unit
 
     public override void ApplyEffectOnNeighbor()
     {
-        var neighbors = tileGrid.GetNeighborsFor(tileCoord);
+        var neighbors = tileGrid.GetNeighborsFor(tileOn.tileCoords);
         foreach (var neighbor in neighbors)
         {
             Tile tile = tileGrid.GetTileAt(neighbor);

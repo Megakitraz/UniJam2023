@@ -16,7 +16,6 @@ public abstract class Unit : MonoBehaviour
     public int maxMP; 
     
     public Tile tileOn;
-    public Vector3Int tileCoord;
     protected TileGrid tileGrid;
 
     protected MovementSystem movementSystem;
@@ -90,6 +89,26 @@ public abstract class Unit : MonoBehaviour
             transform.rotation = endRotation;
         }
         StartCoroutine(MovementCoroutine(endPosition));
+    }
+
+    protected IEnumerator RotationCoroutine(Vector3Int direction)
+    {
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        if(Mathf.Approximately(Math.Abs(Quaternion.Dot(startRotation, endRotation)), 1.0f) == false)
+        {
+            float timeElapsed = 0;
+            float rotationDuration = 1f / rotSpeed;
+            while (timeElapsed < rotationDuration)
+            {
+                timeElapsed += Time.deltaTime;
+                float step = timeElapsed / rotationDuration;
+                transform.rotation = Quaternion.Lerp(startRotation, endRotation, step);
+                yield return null;
+            }
+            transform.rotation = endRotation;
+        }
     }
 
     public IEnumerator MovementCoroutine(Vector3 endPosition)

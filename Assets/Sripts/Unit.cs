@@ -21,30 +21,11 @@ public class Unit : MonoBehaviour
     public Tile tileOn;
     public Vector3Int tileCoord;
     
-    [SerializeField] private GlowHighlight glowHighlight;
-    private Queue<Vector3> pathPositions = new Queue<Vector3>();
+    protected Queue<Vector3> pathPositions = new Queue<Vector3>();
 
     public event Action<Unit> MovementFinished;
 
-    private void Awake()
-    {
-        glowHighlight = GetComponent<GlowHighlight>();
-    }
-
-    private void Update()
-    {
-    }
-
-
-    public void Select()
-    {
-        glowHighlight.ToggleGlow1(true);
-    }
-
-    public void Deselect()
-    {
-        glowHighlight.ToggleGlow1(false);
-    }
+    
 
     internal void MoveThroughPath(List<Vector3> currentPath)
     {

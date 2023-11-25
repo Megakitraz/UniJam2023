@@ -308,15 +308,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d4a163c77755ef745aff299dc2f0a77d, type: 3}
   - name: musicLevel2
     clip: {fileID: 8300000, guid: af15b8ebcb3478a4b9ee8253e042058d, type: 3}
+  - name: musicLevel3
+    clip: {fileID: 8300000, guid: 4d8142cd4508ac942a93b67eadc72fcd, type: 3}
+  - name: menu
+    clip: {fileID: 8300000, guid: 4929045b51d7859408e34bf0b168537c, type: 3}
   sfxSounds:
-  - name: feu_taureau
-    clip: {fileID: 8300000, guid: 88995a28dc5722b4b909389a6bcfeed3, type: 3}
   - name: feu_vegetation
     clip: {fileID: 8300000, guid: 706f4a946c023404cac32d84e82e21f7, type: 3}
   - name: course_taureau
     clip: {fileID: 8300000, guid: 43b1a62584cede641bef527189e2d6e6, type: 3}
-  - name: idle_taureau
-    clip: {fileID: 8300000, guid: 15afb1a429ba8a643a71f54af63a9cde, type: 3}
+  - name: click1_reverb
+    clip: {fileID: 8300000, guid: 320385f4947d80349bf25155e2c12719, type: 3}
   - name: click1
     clip: {fileID: 8300000, guid: 4a4f5937f13b449429881fee0b819f1b, type: 3}
   - name: click1_reverb
@@ -325,11 +327,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 96bf31be01a3f184a963c1c5727ebffa, type: 3}
   - name: click2_reverb
     clip: {fileID: 8300000, guid: d73198a8d78fab442b3c241c809257c4, type: 3}
-  - name: taureautrigg
-    clip: {fileID: 8300000, guid: 39a6325fed2f1a540918ca7194f61954, type: 3}
-  - name: clicktiles
-    clip: {fileID: 8300000, guid: 6308f80d4c73a554399ceb7a31e68c98, type: 3}
-  loopSfxSounds: []
+  loopSfxSounds:
+  - name: idle_taureau
+    clip: {fileID: 8300000, guid: 15afb1a429ba8a643a71f54af63a9cde, type: 3}
+  - name: feu_taureau
+    clip: {fileID: 8300000, guid: 88995a28dc5722b4b909389a6bcfeed3, type: 3}
+  - name: push_crate
+    clip: {fileID: 8300000, guid: df6ce73185f4e0741b46243859786436, type: 3}
   musicSource: {fileID: 2170221197272934428}
   sfxSource: {fileID: 4252016444157831202}
   loopSfxSource: {fileID: 6444762986680372709}

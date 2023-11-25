@@ -44,6 +44,24 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.StopSFX();
         AudioManager.Instance.StopSFXLoop();
+
+        if(level == 0)
+        {
+            AudioManager.Instance.PlayMusic("menu");
+        }
+        else if(level == 1)
+        {
+            AudioManager.Instance.PlayMusic("musicLevel1");
+        }
+        else if(level == 2)
+        {
+            AudioManager.Instance.PlayMusic("musicLevel2");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("musicLevel3");
+        }
     }
+
 
 }

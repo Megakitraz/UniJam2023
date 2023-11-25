@@ -32,7 +32,7 @@ public class MovementSystem : MonoBehaviour
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
         {   
             Tile tile = grid.GetTileAt(tilePosition);
-
+            Debug.Log(tilePosition);
             if (unit.tileOn != tile)
             {
                 if(tile.IsMovableOn(tile.tileCoords - unit.tileOn.tileCoords))
@@ -41,6 +41,8 @@ public class MovementSystem : MonoBehaviour
             
         }
     }
+
+
 
     public void CalculateRange(Unit unit)
     {
@@ -63,7 +65,7 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
-    public void MoveUnit(Player unit)
+    public IEnumerator MoveUnit(Player unit)
     {
         Vector3Int baseCoord = unit.tileOn.tileCoords;
         unit.tileOn.unit = null;
@@ -73,10 +75,13 @@ public class MovementSystem : MonoBehaviour
         Tile target = grid.GetTileAt(endOfPath);
         unit.tileOn = target;
         if (target.obstacle != null)
-                {
-                    TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
-                }
+        {
+            TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
+        }
         StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
+        unit.tileOn = grid.GetTileAt(endOfPath);
+        float t = 1.0f/unit.movSpeed;
+        yield return new WaitForSeconds(t);
         grid.Tick();
         while (unit.tileOn.IsSlippery())
         { 
@@ -93,6 +98,7 @@ public class MovementSystem : MonoBehaviour
                 {
                     TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
                 }
+                yield return new WaitForSeconds(t);
                 grid.Tick();
             }
         }

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        TileGrid.Instance.InitGrid();
         StartTurn();
     }
 

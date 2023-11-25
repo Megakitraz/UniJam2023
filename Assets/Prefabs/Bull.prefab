@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5268578193695766641}
   - component: {fileID: 8845836452710951560}
-  - component: {fileID: 6183285599260852933}
   m_Layer: 0
   m_Name: Bull
   m_TagString: Untagged
@@ -51,25 +50,11 @@ MonoBehaviour:
   mp: 1
   maxMP: 1
   tileOn: {fileID: 0}
+  _animatorFireBull: {fileID: 0}
   movSpeed: 3
   rotSpeed: 3
   direction: 3
   exclamationMark: {fileID: 8322725864632685076}
---- !u!114 &6183285599260852933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8461901714384432366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc526ef83572544b99ec748c94f6692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  glowMaterial1: {fileID: 2100000, guid: 34d31654e5ccb624b9f7318325c1490c, type: 2}
-  glowMaterial2: {fileID: 2100000, guid: 34d31654e5ccb624b9f7318325c1490c, type: 2}
-  glowMaterial3: {fileID: 2100000, guid: 34d31654e5ccb624b9f7318325c1490c, type: 2}
 --- !u!1001 &1947943181014690741
 PrefabInstance:
   m_ObjectHideFlags: 0

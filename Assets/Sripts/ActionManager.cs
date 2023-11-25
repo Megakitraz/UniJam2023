@@ -57,8 +57,9 @@ public class ActionManager : MonoBehaviour
         //HandleTargetTileSelected(selectedTile);
         previouslySelectedTile = selectedTile;
         movementSystem.ShowPath(selectedTile.tileCoords);
-        movementSystem.MoveUnit(selectedUnit);
+        StartCoroutine(movementSystem.MoveUnit(selectedUnit));
         ClearOldSelection();
+        AudioManager.Instance.PlaySFX("clicktiles");
 
     }
 

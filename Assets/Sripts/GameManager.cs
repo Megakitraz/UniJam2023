@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        TileGrid.Instance.InitGrid();
         StartTurn();
     }
 
@@ -36,6 +37,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start turn");
         //actionManager.selectedUnit = null;
         actionManager.HandleUnitSelected(player.gameObject);
-    }   
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.StopSFX();
+        AudioManager.Instance.StopSFXLoop();
+    }
 
 }

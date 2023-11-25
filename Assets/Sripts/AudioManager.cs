@@ -10,8 +10,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public Sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public Sound[] musicSounds, sfxSounds, loopSfxSounds;
+    public AudioSource musicSource, sfxSource, loopSfxSource;
 
     [SerializeField] private string _testNameMusic;
     [SerializeField] private string _testNameSFX;
@@ -48,6 +48,7 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.clip = null;
         sfxSource.clip = null;
+        loopSfxSource.clip = null;
     }
 
     public void VolumeMusic(float volume)
@@ -58,6 +59,7 @@ public class AudioManager : MonoBehaviour
     public void VolumeSFX(float volume)
     {
         sfxSource.volume = volume;
+        loopSfxSource.volume = volume;
     }
 
     public void MuteMusic(bool mute)
@@ -101,6 +103,22 @@ public class AudioManager : MonoBehaviour
         
     }
 
+    public void PlayLoopSFX(string name)
+    {
+        Sound s = Array.Find(loopSfxSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("SFX Loop Sound Not Found");
+            return;
+        }
+
+        Debug.Log("Play SFX Loop");
+        loopSfxSource.clip = s.clip;
+        loopSfxSource.Play();
+
+    }
+
     public void StopMusic()
     {
         musicSource.Stop();
@@ -108,7 +126,12 @@ public class AudioManager : MonoBehaviour
 
     public void StopSFX()
     {
-        musicSource.Stop();
+        sfxSource.Stop();
+    }
+
+    public void StopSFXLoop()
+    {
+        loopSfxSource.Stop();
     }
 
 

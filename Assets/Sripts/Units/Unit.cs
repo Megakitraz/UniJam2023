@@ -105,11 +105,12 @@ public abstract class Unit : MonoBehaviour
             Debug.Log("Animation");
             _animatorFireBull.SetBool("Run", true);
             AudioManager.Instance.PlaySFX("course_taureau");
+            AudioManager.Instance.PlaySFX("feu_taureau");
         }
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
         float timeElapsed = 0;
-        float movementDuration = 1f / movSpeed;
+        float movementDuration = (endPosition - startPosition).magnitude * 1f / movSpeed;
         while (timeElapsed < movementDuration)
         {
             timeElapsed += Time.deltaTime;
@@ -124,9 +125,11 @@ public abstract class Unit : MonoBehaviour
             Debug.Log("Animation");
             _animatorFireBull.SetBool("Run", false);
             AudioManager.Instance.StopSFX();
+            AudioManager.Instance.StopSFXLoop();
         }
 
         MovementFinished?.Invoke(this);
+        
     }
 }
 

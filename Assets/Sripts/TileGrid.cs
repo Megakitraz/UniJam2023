@@ -24,12 +24,16 @@ public class TileGrid : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    private void Start()
+    public void InitGrid()
     {
         SetupTile();
         SetupNeighbors();
         SetupRow();
         SetupColumn();
+    }
+    private void Start()
+    {
+       
     }
 
     public Tile GetTileAt(Vector3Int tileCoordinates)

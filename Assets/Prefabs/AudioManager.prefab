@@ -170,7 +170,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d4a163c77755ef745aff299dc2f0a77d, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -287,6 +287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9216913153404588443}
+  - {fileID: 8774761189390050454}
   - {fileID: 1435650295670593343}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,9 +304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds:
-  - name: music1.3
+  - name: musicLevel1
     clip: {fileID: 8300000, guid: d4a163c77755ef745aff299dc2f0a77d, type: 3}
-  - name: music2
+  - name: musicLevel2
     clip: {fileID: 8300000, guid: af15b8ebcb3478a4b9ee8253e042058d, type: 3}
   sfxSounds:
   - name: feu_taureau
@@ -313,10 +314,152 @@ MonoBehaviour:
   - name: feu_vegetation
     clip: {fileID: 8300000, guid: 706f4a946c023404cac32d84e82e21f7, type: 3}
   - name: course_taureau
-    clip: {fileID: 8300000, guid: 37b94bafd03aa684d88465be639ef51b, type: 3}
+    clip: {fileID: 8300000, guid: 43b1a62584cede641bef527189e2d6e6, type: 3}
   - name: idle_taureau
     clip: {fileID: 8300000, guid: 15afb1a429ba8a643a71f54af63a9cde, type: 3}
+  - name: click1
+    clip: {fileID: 8300000, guid: 4a4f5937f13b449429881fee0b819f1b, type: 3}
+  - name: click1_reverb
+    clip: {fileID: 8300000, guid: 320385f4947d80349bf25155e2c12719, type: 3}
+  - name: click2
+    clip: {fileID: 8300000, guid: 96bf31be01a3f184a963c1c5727ebffa, type: 3}
+  - name: click2_reverb
+    clip: {fileID: 8300000, guid: d73198a8d78fab442b3c241c809257c4, type: 3}
+  - name: taureautrigg
+    clip: {fileID: 8300000, guid: 39a6325fed2f1a540918ca7194f61954, type: 3}
+  - name: clicktiles
+    clip: {fileID: 8300000, guid: 6308f80d4c73a554399ceb7a31e68c98, type: 3}
+  loopSfxSounds: []
   musicSource: {fileID: 2170221197272934428}
   sfxSource: {fileID: 4252016444157831202}
-  _testNameMusic: music1.3
-  _testNameSFX: feu_taureau
+  loopSfxSource: {fileID: 6444762986680372709}
+  _testNameMusic: musicLevel1
+  _testNameSFX: click1
+--- !u!1 &5266499033630692290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8774761189390050454}
+  - component: {fileID: 6444762986680372709}
+  m_Layer: 0
+  m_Name: Loop SFX Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8774761189390050454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266499033630692290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4734064342848059545}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &6444762986680372709
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266499033630692290}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

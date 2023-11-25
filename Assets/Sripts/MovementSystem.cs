@@ -90,10 +90,13 @@ public class MovementSystem : MonoBehaviour
         if (grid.GetTileAt(destTilePos) != null)
         {
             Tile destTile = grid.GetTileAt(destTilePos);
-            obstacle.tileOn.obstacle = null;
-            destTile.obstacle = obstacle;
-            StartCoroutine(obstacle.MovementCoroutine(destTile.transform.position));
+            if (destTile.IsReachable())
+            {
+                obstacle.tileOn.obstacle = null;
+                obstacle.tileOn = destTile;
+                destTile.obstacle = obstacle;
+                StartCoroutine(obstacle.MovementCoroutine(destTile.transform.position));
+            }
         }
-
     }
 }

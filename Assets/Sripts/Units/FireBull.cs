@@ -47,7 +47,7 @@ public class FireBull : Unit
 
     private bool IsPlayerVisible()
     {
-        Vector3Int coords = tileCoord;
+        Vector3Int coords = tileOn.tileCoordinates.GetCoords();
         bool solved = false;
         while(!solved)
         {
@@ -73,6 +73,7 @@ public class FireBull : Unit
                 Debug.Log(":(");
             break;
             }
+            Debug.Log(coords);
             Tile tile = TileGrid.Instance.GetTileAt(coords);
             if (tile != null)
             {

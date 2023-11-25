@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour
     [SerializeField]
     private GlowHighlight highlight;
 
-    private TileCoordinates tileCoordinates;
+    public TileCoordinates tileCoordinates;
 
     [SerializeField]
     public int tileCost;
@@ -60,9 +60,11 @@ public class Tile : MonoBehaviour
 
     public bool IsPlayerOnTile()
     {
-        if (unit != null)
+        if (unit == null)
+        {
             return false;
-        if (unit.GetType() == typeof(Player))
+        }   
+        if (unit.GetComponent<Player>() != null)
         {
             return true;
         }

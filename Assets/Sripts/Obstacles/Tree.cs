@@ -5,6 +5,8 @@ using UnityEngine;
 public class Tree : Obstacle
 {
     private bool isBurning = false;
+    [SerializeField]
+    private int burnTime;
 
     public override void ApplyHeat()
     {
@@ -24,6 +26,7 @@ public class Tree : Obstacle
     {
         if (isBurning)
         {
+            burnTime--;
             var neighbors = tileGrid.GetNeighborsFor(tileOn.tileCoords);
             foreach (var neighbor in neighbors)
             {
@@ -32,8 +35,8 @@ public class Tree : Obstacle
             }
 
             tileOn.obstacle = null;
-            
-            // TODO remove tree
+            if(burnTime < 0)
+                Destroy(gameObject);
         }
     }
 }

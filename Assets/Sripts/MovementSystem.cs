@@ -148,4 +148,16 @@ public class MovementSystem : MonoBehaviour
             }
         }
     }
+
+    public bool IsObstaclePushable(Obstacle obstacle, Vector3Int dir)
+    {
+        if (grid.GetTileAt(obstacle.tileOn.tileCoords + dir) != null && grid.GetTileAt(obstacle.tileOn.tileCoords + dir).IsPushableOn())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

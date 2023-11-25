@@ -9,7 +9,9 @@ abstract public class Obstacle : MonoBehaviour {
     public Tile tileOn;
     protected TileGrid tileGrid;
     protected MovementSystem movementSystem;
-    
+
+    public bool isPushable;
+
     private Queue<Vector3> pathPositions = new Queue<Vector3>();
     public float movSpeed;
     public event Action<Obstacle> MovementFinished;
@@ -53,7 +55,7 @@ abstract public class Obstacle : MonoBehaviour {
             yield return null;
         }
         transform.position = endPosition;
-        MovementFinished?.Invoke(this);
-        
+        MovementFinished?.Invoke(this);  
     }
+
 }

@@ -1404,10 +1404,8 @@ MonoBehaviour:
   mp: 1
   maxMP: 1
   tileOn: {fileID: 31921864}
-  tileCoord: {x: 0, y: 0, z: 0}
   movSpeed: 2
   rotSpeed: 5
-  glowHighlight: {fileID: 2072725153}
 --- !u!1001 &5919186338173071947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1481,7 +1479,13 @@ PrefabInstance:
       propertyPath: tileOn
       value: 
       objectReference: {fileID: 1507507435}
-    m_RemovedComponents: []
+    - target: {fileID: 8845836452710951560, guid: 49b4327c650ee7142bbef235a56ea762,
+        type: 3}
+      propertyPath: glowHighlight
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6183285599260852933, guid: 49b4327c650ee7142bbef235a56ea762, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

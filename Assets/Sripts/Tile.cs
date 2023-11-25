@@ -63,6 +63,40 @@ public class Tile : MonoBehaviour
         return GroundManager.IsReachable(groundtype);
     }
 
+    public bool IsMovableOn(Vector3Int dir)
+    {
+        if (IsReachable())
+        {
+           return true;
+        }
+            
+        
+        else if (obstacle != null && obstacle.isPushable)
+        {
+            Tile nextTile = grid.GetTileAt(tileCoordinates.GetCoords() + dir);
+            if (nextTile != null && nextTile.IsPushableOn())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        else
+            return false;
+    }
+
+    public bool IsPushableOn()
+    {
+        if (obstacle != null || unit != null)
+        {
+            return false;
+        } 
+        return true;
+    }
+
     public bool IsPlayerOnTile()
     {
         if (unit == null)

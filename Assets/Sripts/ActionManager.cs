@@ -69,7 +69,6 @@ public class ActionManager : MonoBehaviour
             ClearOldSelection();
         }
         selectedUnit = unitReference;
-        selectedUnit.Select();
         movementSystem.ShowRange(selectedUnit);
     }
 
@@ -93,7 +92,6 @@ public class ActionManager : MonoBehaviour
     {
         if (selectedUnit != null)
         {
-            selectedUnit.Deselect();
             HideCurrentRange();
             selectedUnit = null;
         } 
@@ -104,7 +102,6 @@ public class ActionManager : MonoBehaviour
     {
         if(selectedTile.unit != null)
         {
-            //selectedUnit.Deselect();
             //ClearOldSelection();
             return true;
         }

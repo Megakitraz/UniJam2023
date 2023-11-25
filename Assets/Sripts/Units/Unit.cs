@@ -24,10 +24,7 @@ public abstract class Unit : MonoBehaviour
 
     public float movSpeed;
     public float rotSpeed;
-
-
-
-    [SerializeField] private GlowHighlight glowHighlight;
+    
     private Queue<Vector3> pathPositions = new Queue<Vector3>();
 
     public event Action<Unit> MovementFinished;
@@ -37,7 +34,6 @@ public abstract class Unit : MonoBehaviour
         if (tileOn != null)
             tileOn.unit = this;
         movementSystem = FindObjectOfType<MovementSystem>();
-        glowHighlight = GetComponent<GlowHighlight>();
         tileGrid = FindObjectOfType<TileGrid>();
     }
 
@@ -47,17 +43,6 @@ public abstract class Unit : MonoBehaviour
 
     public abstract void Tick();
     public abstract void ApplyEffectOnNeighbor();
-
-    public void Select()
-    {
-        glowHighlight.ToggleGlow1(true);
-    }
-
-    public void Deselect()
-    {
-        glowHighlight.ToggleGlow1(false);
-    }
-    
     
     internal void MoveThroughPath(List<Vector3> currentPath)
     {

@@ -7,17 +7,28 @@ public class FireBull : Unit
     
     private bool isEnraged = false;
     [SerializeField] private Direction direction;
+    private GameObject exclamationMark;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        HideIndicator();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void ShowIndicator()
+    {
+        exclamationMark.SetActive(true);
+    }
+
+    void HideIndicator()
+    {
+        exclamationMark.SetActive(false);
     }
 
     public override void Tick()

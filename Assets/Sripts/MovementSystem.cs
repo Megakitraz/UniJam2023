@@ -83,26 +83,33 @@ public class MovementSystem : MonoBehaviour
         float t = 1.0f/unit.movSpeed;
         yield return new WaitForSeconds(t);
         grid.Tick();
+        if (target.IsMovableOn(target.tileCoords - unit.tileOn.tileCoords))
+        {
+            baseCoord = unit.tileOn.tileCoords;
+            unit.tileOn.unit = null;
+            unit.tileOn = target;
+            unit.tileOn.unit = unit;
+            StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+            if (target.obstacle != null)
+            {
+                TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
+            }
+
+            yield return new WaitForSeconds(t);
+            grid.Tick();
+        }
+
         while (unit.tileOn.IsSlippery())
         { 
             target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
             if (target == null) break;
-            if (target.IsMovableOn(target.tileCoords - unit.tileOn.tileCoords))
-            {
-                baseCoord = unit.tileOn.tileCoords;
-                unit.tileOn.unit = null;
-                unit.tileOn = target;
-                unit.tileOn.unit = unit;
-                StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
-                if (target.obstacle != null)
-                {
-                    TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
-                }
-                yield return new WaitForSeconds(t);
-                grid.Tick();
-            }
-        }
-        GameManager.Instance.StartTurn();
+            unit.tileOn.unit = null;
+            unit.tileOn = target;
+            unit.tileOn.unit = unit;
+            StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+
+            
+        } 
     }
     
 

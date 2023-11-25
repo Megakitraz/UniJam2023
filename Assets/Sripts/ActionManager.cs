@@ -22,7 +22,6 @@ public class ActionManager : MonoBehaviour
         
         if (CheckIfTheSameUnitSelected(unitReference))
         {
-
             return;
         }
         PrepareUnitForMovement(unitReference);

@@ -77,14 +77,17 @@ public class MovementSystem : MonoBehaviour
         while (unit.tileOn.IsSlippery())
         { 
             Tile target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+            if (target == null) break;
             if (target.IsReachable())
             {
+                unit.tileOn.unit = null;
                 unit.tileOn = target;
+                unit.tileOn.unit = unit;
                 StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
                 grid.Tick();
             }
         }
-
+        GameManager.Instance.StartTurn();
     }
 
 
@@ -104,6 +107,7 @@ public class MovementSystem : MonoBehaviour
 
     public void MoveEntity(Unit unit, Vector3Int destTilePos)
     {
+        Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
         if (grid.GetTileAt(destTilePos) != null)
         {
             Tile destTile = grid.GetTileAt(destTilePos);
@@ -111,6 +115,20 @@ public class MovementSystem : MonoBehaviour
             unit.tileOn = destTile;
             destTile.unit = unit;
             StartCoroutine(unit.MovementCoroutine(destTile.transform.position));
+            if (unit.GetComponent<FireBull>() != null)
+            {
+                var target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+                if (target == null) return;
+                while (target.IsReachable())
+                {   
+                    unit.tileOn.unit = null;
+                    unit.tileOn = target;
+                    target.unit = unit;
+                    StartCoroutine(unit.MovementCoroutine(target.transform.position));
+                    target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+                    if (target == null) return;
+                }
+            }
         }
     }
     

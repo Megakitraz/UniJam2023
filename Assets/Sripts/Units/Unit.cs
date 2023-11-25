@@ -42,7 +42,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     public abstract void Tick();
-    protected abstract void ApplyEffectOnNeighbor();
+    public abstract void ApplyEffectOnNeighbor();
 
     public void Select()
     {

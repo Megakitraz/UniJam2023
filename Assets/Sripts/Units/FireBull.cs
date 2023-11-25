@@ -27,16 +27,17 @@ public class FireBull : Unit
             // TODO move fireBull
             return;
         }
+        ApplyEffectOnNeighbor();
         CheckPlayerVisibility();
     }
 
-    protected override void ApplyEffectOnNeighbor()
+    public override void ApplyEffectOnNeighbor()
     {
         var neighbors= tileGrid.GetNeighborsFor(tileCoord);
         foreach (var neighbor in neighbors)
         {
             Tile tile = tileGrid.GetTileAt(neighbor);
-            //TODO tile.ApplyHeat();
+            tile.ApplyHeat();
         }
     }
 

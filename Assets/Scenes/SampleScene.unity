@@ -497,19 +497,7 @@ MonoBehaviour:
   grid: {fileID: 17963280}
   UnitSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1577670675}
-        m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
-        m_MethodName: HandleUnitSelected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   TileSelected:
     m_PersistentCalls:
       m_Calls:
@@ -669,7 +657,7 @@ MonoBehaviour:
   tileGrid: {fileID: 17963280}
   gManager: {fileID: 939490388}
   movementSystem: {fileID: 1919334055}
-  player: {fileID: 2072725152}
+  player: {fileID: 0}
   selectedUnit: {fileID: 0}
 --- !u!4 &1577670676
 Transform:
@@ -859,7 +847,6 @@ MonoBehaviour:
   rotSpeed: 5
   tileOn: {fileID: 31921864}
   tileCoord: {x: 0, y: 0, z: 0}
-  glowHighlight: {fileID: 2072725153}
 --- !u!114 &2072725153
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ public class IceBunny : Unit
         foreach (var neighbor in neighbors)
         {
             Tile tile = tileGrid.GetTileAt(neighbor);
-            // TODO tile.ApplyCold();
+            tile.ApplyCold();
         }
     }
 }

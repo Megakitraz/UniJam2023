@@ -16,7 +16,7 @@ public class FireBull : Unit
     // Start is called before the first frame update
     void Start()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.PlayLoopSFX("idle_taureau");
+        AudioManager.Instance.PlayLoopSFX("idle_taureau");
         HideIndicator();
         
     }
@@ -35,12 +35,13 @@ public class FireBull : Unit
     public void ShowIndicator()
     {
         exclamationMark.SetActive(true);
+        AudioManager.Instance.PlaySFX("trigg_taureau");
     }
 
     public void HideIndicator()
     {
         exclamationMark.SetActive(false);
-        if (AudioManager.Instance != null) AudioManager.Instance.PlayLoopSFX("idle_taureau");
+        
     }
 
     public override void Tick()
@@ -68,9 +69,12 @@ public class FireBull : Unit
                     coords += new Vector3Int(-1, 0, 0);
                     break;
             }
-
-            movementSystem.MoveEntity(this,coords);
+            //if (AudioManager.Instance != null) AudioManager.Instance.PlayLoopSFX("course_taureau");
+            //if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("feu_taureau");
+            StartCoroutine(movementSystem.MoveEntity(this,coords));
             isEnraged = false;
+            
+
             return;
         }
         ApplyEffectOnNeighbor();
@@ -119,7 +123,7 @@ public class FireBull : Unit
         if (isEnraged)
         {
             ShowIndicator();
-            AudioManager.Instance.PlaySFX("taureautrigg");
+            //AudioManager.Instance.PlaySFX("taureautrigg");
         }
     }
 

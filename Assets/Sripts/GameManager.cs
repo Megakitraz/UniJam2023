@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ActionManager actionManager;
     [SerializeField] public MovementSystem movementSystem;
     public static bool playerCanPlay;
+    private int currentLevel = 0 ;
+    private int maxLevel = 10 ;
 
     void Awake()
     {
@@ -81,8 +83,18 @@ public class GameManager : MonoBehaviour
     public void StartTurn()
     {
         Debug.Log("Start turn");
+        
         //actionManager.selectedUnit = null;
         actionManager.HandleUnitSelected(player.gameObject);
+    }
+
+    void Win()
+    {
+        currentLevel ++;
+        if (currentLevel <= maxLevel)
+        {
+            SceneManager.LoadScene("Level" + currentLevel.ToString());
+        }
     }
 
     private void OnLevelWasLoaded(int level)
@@ -103,9 +115,13 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlayMusic("musicLevel2");
         }
-        else
+        else if (level == 3)
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("musicLevel4");
         }
     }
 

@@ -19,13 +19,7 @@ public class ActionManager : MonoBehaviour
             return;
         }
         Player unitReference = unit.GetComponent<Player>();
-        
-        if (CheckIfTheSameUnitSelected(unitReference))
-        {
-            return;
-        }
         PrepareUnitForMovement(unitReference);
-
     }
 
     private bool CheckIfTheSameUnitSelected(Unit unitReference)

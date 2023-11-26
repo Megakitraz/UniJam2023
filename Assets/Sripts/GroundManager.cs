@@ -11,6 +11,7 @@ public enum Groundtype
     Lake,
     Soaked,
     FrostedLake,
+    Portal,
 }
 public class GroundManager
 {
@@ -28,6 +29,7 @@ public class GroundManager
             case Groundtype.Hole:
             case Groundtype.Lake:
             case Groundtype.Soaked:
+            case Groundtype.Portal:    
                 return groundtype;
             default:
                 throw new ArgumentOutOfRangeException(nameof(groundtype), groundtype, null);
@@ -42,14 +44,12 @@ public class GroundManager
             case Groundtype.Hole:
             case Groundtype.Ice:
             case Groundtype.FrostedLake:
+            case Groundtype.Portal:
                 return groundtype;
-                break;
             case Groundtype.Lake:
                 return Groundtype.FrostedLake;
-                break;
             case Groundtype.Soaked:
                 return Groundtype.Ice;
-                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(groundtype), groundtype, null);
         }
@@ -63,12 +63,11 @@ public class GroundManager
             case Groundtype.Soaked:
             case Groundtype.FrostedLake:
             case Groundtype.Ice:
+            case Groundtype.Portal:    
                 return true;
-                break;
             case Groundtype.Hole:
             case Groundtype.Lake:
                 return false;
-                break;
 
             default:
                 throw new ArgumentOutOfRangeException(nameof(groundtype), groundtype, null);
@@ -84,11 +83,11 @@ public class GroundManager
             case Groundtype.Hole:
             case Groundtype.Lake:
             case Groundtype.Soaked:
+            case Groundtype.Portal:    
                 return false;
             case Groundtype.Ice:
             case Groundtype.FrostedLake:
                 return true;
-                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(groundtype), groundtype, null);
         }

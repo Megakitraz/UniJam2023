@@ -22,7 +22,7 @@ public class AudioRedirector : MonoBehaviour
         Random.InitState(System.DateTime.Now.Second);
 
         
-        switch(Random.Range(0, 9))
+        switch(Random.Range(0, 10))
         {
             case 0:
                 AudioManager.Instance.PlaySFX("mage_walk1");

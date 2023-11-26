@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour
 
     private TileGrid grid;
 
-    private Groundtype type;
+    public Groundtype type;
 
     private MeshRenderer renderer;
     

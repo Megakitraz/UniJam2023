@@ -32,7 +32,7 @@ public class TitleScreen : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Cinematic");
     }
     public void Quit()
     {

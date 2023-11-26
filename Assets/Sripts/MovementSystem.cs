@@ -121,6 +121,7 @@ public class MovementSystem : MonoBehaviour
     public IEnumerator MoveEntity(Unit unit, Vector3Int destTilePos)
     {
         float t = 1.0f/unit.movSpeed;
+        GameManager.Instance.turnDelay  = 1f;
 
         Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
         if (grid.GetTileAt(destTilePos) != null)

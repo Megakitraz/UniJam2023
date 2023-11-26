@@ -86,8 +86,18 @@ public class GameManager : MonoBehaviour
         
         //actionManager.selectedUnit = null;
         actionManager.HandleUnitSelected(player.gameObject);
+        TryWin();
     }
 
+    void TryWin()
+    {
+        Debug.Log(player.tileOn.groundtype);
+        Debug.Log(Groundtype.Portal);
+        if(player.tileOn.groundtype == Groundtype.Portal)
+        {
+            Win();
+        }
+    }
     void Win()
     {
         currentLevel ++;

@@ -155,7 +155,6 @@ public class FireBull : Unit
                 Debug.Log(":(");
             break;
             }
-            Debug.Log(coords);
             Tile tile = GameManager.Instance.movementSystem.grid.GetTileAt(coords);
             if (tile != null)
             {

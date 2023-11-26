@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 8b23feeab0a2e4f43af1d2071464ed97
+guid: cad4a9387b129fe45aafb27e70918ddb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Leaf
-    second: {fileID: 2100000, guid: ee799975cf159ff4dbef259e8c9402d7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tronc
-    second: {fileID: 2100000, guid: 2a8045d5ba6a066418145cc67e3926f9, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Leaf Base Color
-    second: {fileID: 2800000, guid: 67eb2e76a6a649646b1c79852d4e41c1, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

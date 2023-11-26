@@ -14,6 +14,7 @@ public class TitleScreen : MonoBehaviour
     {
         DisplayTitleScreen();
         AudioManager.Instance.PlayMusic("menu");
+        PauseScreen.Instance.gameObject.SetActive(false);
     }
 
 

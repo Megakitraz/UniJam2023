@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static bool playerCanPlay;
     private int currentLevel = 0 ;
     private int maxLevel = 10 ;
+    private float turnDelay  = 0.2f;
 
     void Awake()
     {
@@ -43,19 +44,26 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log(1);
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        Debug.Log(2);
         player = GameObject.Find("Player").GetComponent<Unit>();
+        Debug.Log(3);
         actionManager = GameObject.Find("ActionManager").GetComponent<ActionManager>();
+        Debug.Log(4);
         movementSystem = GameObject.Find("MovementSystem").GetComponent<MovementSystem>();
+        Debug.Log(5);
         movementSystem.grid.InitGrid();
+        Debug.Log(6);
         PauseScreen.Instance.gameObject.SetActive(false);
+        Debug.Log(7);
         StartTurn();
     }
 
     void Start()
     {
         movementSystem.grid.InitGrid();
-        StartTurn();
+        StartTurnAux();
     }
     void Update()
     {
@@ -82,8 +90,13 @@ public class GameManager : MonoBehaviour
 
     public void StartTurn()
     {
+        Invoke("StartTurnAux", turnDelay);
+    }
+
+    public void StartTurnAux()
+    {
         Debug.Log("Start turn");
-        
+        turnDelay = 0.2f;
         //actionManager.selectedUnit = null;
         actionManager.HandleUnitSelected(player.gameObject);
         TryWin();

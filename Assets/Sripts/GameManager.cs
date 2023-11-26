@@ -69,9 +69,13 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlayMusic("musicLevel2");
         }
-        else
+        else if (level == 3)
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("musicLevel4");
         }
     }
 

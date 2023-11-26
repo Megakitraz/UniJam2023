@@ -45,7 +45,7 @@ abstract public class Obstacle : MonoBehaviour {
     {
         if(gameObject.TryGetComponent<Box>(out Box box))
         {
-            AudioManager.Instance.PlayLoopSFX("push_crate");
+            AudioManager.Instance.PlaySFX("push_crate");
         }
         Vector3 startPosition = transform.position;
         endPosition.y = startPosition.y;
@@ -60,11 +60,6 @@ abstract public class Obstacle : MonoBehaviour {
         }
         transform.position = endPosition;
         MovementFinished?.Invoke(this);
-
-        if (gameObject.TryGetComponent<Box>(out box))
-        {
-            AudioManager.Instance.StopSFXLoop();
-        }
 
     }
 

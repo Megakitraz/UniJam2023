@@ -150,6 +150,10 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlayMusic("musicIntro");
         }
+        else if(scene.name == "EndScene")
+        {
+            AudioManager.Instance.PlayMusic("musicIntro");
+        }
         else if(scene.name == "Level1")
         {
             AudioManager.Instance.PlayMusic("musicLevel1");
@@ -162,9 +166,21 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
         }
-        else
+        else if(scene.name == "Level4")
         {
             AudioManager.Instance.PlayMusic("musicLevel4");
+        }
+        else if(scene.name == "Level5")
+        {
+            AudioManager.Instance.PlayMusic("musicLevel2");
+        }
+        else if(scene.name == "Level6")
+        {
+            AudioManager.Instance.PlayMusic("musicLevel4");
+        }
+        else if(scene.name == "Level7")
+        {
+            AudioManager.Instance.PlayMusic("musicLevel3");
         }
     }
 

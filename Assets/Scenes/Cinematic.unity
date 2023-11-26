@@ -259,7 +259,7 @@ MonoBehaviour:
   introImage: {fileID: 1679295923}
   intro1: {fileID: 21300000, guid: fccba56b95de03e43adbb34416da1c92, type: 3}
   intro2: {fileID: 21300000, guid: 6ec164022d5945a4dbd04fd50a98756a, type: 3}
-  fadeDuration: 0.1
+  fadeDuration: 3.37
 --- !u!4 &265144275
 Transform:
   m_ObjectHideFlags: 0

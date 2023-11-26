@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17893572, g: 0.22405417, b: 0.30589914, a: 1}
+  m_IndirectSpecularColor: {r: 0.17893572, g: 0.22405419, b: 0.30589914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -720,6 +720,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Witcher.1.0
       objectReference: {fileID: 0}
+    - target: {fileID: 8459414295141648426, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 001b0cd5e8116684a9a643060f11ad68, type: 2}
+    - target: {fileID: 8459414295141648426, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 001b0cd5e8116684a9a643060f11ad68, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1026,7 +1036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tu es plus malin que tu n'as l'air
+  m_text: Tu es plus malin que tu n'en as l'air ...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f5b0a38dd258514796525af08e36bbb, type: 2}
   m_sharedMaterial: {fileID: 5669726058968909446, guid: 9f5b0a38dd258514796525af08e36bbb,

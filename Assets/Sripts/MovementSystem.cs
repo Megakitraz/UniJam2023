@@ -201,6 +201,8 @@ public class MovementSystem : MonoBehaviour
 
     public void KillPlayer()
     {
+        AudioManager.Instance.PlaySFX("death");
+
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

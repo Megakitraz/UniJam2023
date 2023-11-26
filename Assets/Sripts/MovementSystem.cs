@@ -75,10 +75,9 @@ public class MovementSystem : MonoBehaviour
         float t = 1.0f/unit.movSpeed;
         if (target.IsMovableOn(target.tileCoords - unit.tileOn.tileCoords))
         {
-            baseCoord = unit.tileOn.tileCoords;
             unit.tileOn.unit = null;
             unit.tileOn = target;
-            unit.tileOn.unit = unit;
+            target.unit = unit;
             StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
             if (target.obstacle != null)
             {
@@ -98,8 +97,8 @@ public class MovementSystem : MonoBehaviour
             unit.tileOn = target;
             unit.tileOn.unit = unit;
             StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
-
-            
+            yield return new WaitForSeconds(t);
+            grid.Tick();
         } 
     }
     
@@ -125,7 +124,13 @@ public class MovementSystem : MonoBehaviour
         GameManager.Instance.turnDelay  = 1f;
 
         Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
-        if (grid.GetTileAt(destTilePos) != null)
+        Tile target = grid.GetTileAt(destTilePos);
+        if (target != null && target.IsPlayerOnTile())
+        {
+            Debug.Log("A");
+            Invoke(nameof(KillPlayer), 0.5f);
+        }
+        if (target != null && target.IsReachable())
         {
             unit.PlayStopBullSounds(true);
 
@@ -138,7 +143,7 @@ public class MovementSystem : MonoBehaviour
             unit.ApplyEffectOnNeighbor();
             if (unit.GetComponent<FireBull>() != null)
             {
-                var target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
+                target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
                 if (target == null)
                 {
                     unit.PlayStopBullSounds(false);
@@ -146,7 +151,13 @@ public class MovementSystem : MonoBehaviour
                 }
 
                 while (target.IsReachable())
-                {   
+                {
+                    if (target.IsPlayerOnTile())
+                    {
+                        Debug.Log("B");
+                        Invoke(nameof(KillPlayer), 0.5f);
+                        break;
+                    }
                     unit.tileOn.unit = null;
                     unit.tileOn = target;
                     target.unit = unit;
@@ -156,11 +167,13 @@ public class MovementSystem : MonoBehaviour
                     target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
                     if (target == null) break;
                 }
-                if (target != null && target.unit == player)
+                
+                if (target != null && target.IsPlayerOnTile())
                 {
-                    Scene scene = SceneManager.GetActiveScene();
-                    SceneManager.LoadScene(scene.name);
+                    Debug.Log("C");
+                    Invoke(nameof(KillPlayer), 0.5f);
                 }
+               
 
                 unit.PlayStopBullSounds(false);
             }
@@ -184,6 +197,12 @@ public class MovementSystem : MonoBehaviour
                 StartCoroutine(obstacle.MovementCoroutine(destTile.transform.position));
             }
         }
+    }
+
+    public void KillPlayer()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     public bool IsObstaclePushable(Obstacle obstacle, Vector3Int dir)

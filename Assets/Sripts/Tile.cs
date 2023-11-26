@@ -20,6 +20,10 @@ public class Tile : MonoBehaviour
 
     private Groundtype type;
 
+    private MeshRenderer renderer;
+    
+    [SerializeField] private List<Material> tileMaterials;
+
     public Groundtype groundtype
     {
         get => _groundtype;
@@ -35,9 +39,24 @@ public class Tile : MonoBehaviour
 
     private void UpdateGroundModel()
     {
-        //ToDo Model en fonction de GroundType
+        switch (_groundtype)
+        {
+            case Groundtype.Normal:
+                renderer.material = tileMaterials[0];
+                break;
+            case Groundtype.Portal:
+                renderer.material = tileMaterials[1];
+                break;
+            case Groundtype.Soaked:
+                renderer.material = tileMaterials[2];
+                break;
+            case Groundtype.Ice:
+                renderer.material = tileMaterials[3];
+                break;
+            default:
+                break;
+        }
 
-        //throw new NotImplementedException();
     }
 
     [SerializeField]
@@ -124,39 +143,34 @@ public class Tile : MonoBehaviour
             unit.tileOn = this;
         tileCoordinates = GetComponent<TileCoordinates>();
         grid = FindObjectsOfType<TileGrid>()[0];
+        renderer = GetComponentInChildren<MeshRenderer>(); 
+        UpdateGroundModel();
     }
 
     public void EnableHighlight1()
     {           
-        highlight.ToggleGlow2(false);
-        highlight.ToggleGlow3(false);
-        highlight.ToggleGlow1(true);
+        renderer.material.SetColor("_EmissionColor",Color.grey);
+        renderer.material.EnableKeyword("_Emission");
     }
 
     public void DisableHighlight1()
     {
-        highlight.ToggleGlow1(false);
+        renderer.material.SetColor("_EmissionColor",Color.black);
     }
 
     public void EnableHighlight2()
     {
-        
-        highlight.ToggleGlow1(false);
-        highlight.ToggleGlow3(false);
-        highlight.ToggleGlow2(true);
+      
     }
 
     public void DisableHighlight2()
     {
-        highlight.ToggleGlow2(false);
+       
     }
 
     public void EnableHighlight3()
     {
         
-        highlight.ToggleGlow1(false);
-        highlight.ToggleGlow2(false);
-        highlight.ToggleGlow3(true);
     }
 
     public void DisableHighlight3()
@@ -166,9 +180,7 @@ public class Tile : MonoBehaviour
 
     public void DisableHighlights()
     {
-        highlight.ToggleGlow1(false);
-        highlight.ToggleGlow2(false);
-        highlight.ToggleGlow3(false);
+        renderer.material.SetColor("_EmissionColor",Color.black);
     }
     
 

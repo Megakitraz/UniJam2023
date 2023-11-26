@@ -32,7 +32,6 @@ public class MovementSystem : MonoBehaviour
         foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
         {   
             Tile tile = grid.GetTileAt(tilePosition);
-            Debug.Log(tilePosition);
             if (unit.tileOn != tile)
             {
                 if(tile.IsMovableOn(tile.tileCoords - unit.tileOn.tileCoords))
@@ -93,7 +92,7 @@ public class MovementSystem : MonoBehaviour
         while (unit.tileOn.IsSlippery() && checkSlippery)
         { 
             target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
-            if (target == null) break;
+            if (target == null || target.obstacle != null) break;
             unit.tileOn.unit = null;
             unit.tileOn = target;
             unit.tileOn.unit = unit;
@@ -122,6 +121,7 @@ public class MovementSystem : MonoBehaviour
     public IEnumerator MoveEntity(Unit unit, Vector3Int destTilePos)
     {
         float t = 1.0f/unit.movSpeed;
+        GameManager.Instance.turnDelay  = 1f;
 
         Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
         if (grid.GetTileAt(destTilePos) != null)
@@ -171,7 +171,6 @@ public class MovementSystem : MonoBehaviour
             Tile destTile = grid.GetTileAt(destTilePos);
             if (destTile.IsReachable())
             {
-                Debug.Log("yyyyyy");
                 obstacle.tileOn.obstacle = null;
                 obstacle.tileOn = destTile;
                 destTile.obstacle = obstacle;

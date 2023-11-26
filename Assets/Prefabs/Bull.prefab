@@ -51,7 +51,7 @@ MonoBehaviour:
   maxMP: 1
   tileOn: {fileID: 0}
   _animatorFireBull: {fileID: 5095985980279399625}
-  movSpeed: 5
+  movSpeed: 10
   rotSpeed: 3
   direction: 3
   exclamationMark: {fileID: 8322725864632685076}
@@ -381,27 +381,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9cc046345beb8f84cb501bc690bcf167,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8001032
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cc046345beb8f84cb501bc690bcf167,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.46193978
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cc046345beb8f84cb501bc690bcf167,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.33141357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cc046345beb8f84cb501bc690bcf167,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.19134171
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cc046345beb8f84cb501bc690bcf167,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cc046345beb8f84cb501bc690bcf167,
         type: 3}

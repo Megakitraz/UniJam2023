@@ -9,6 +9,7 @@ public class IceBlock : Obstacle
         if (tileOn.groundtype == Groundtype.Normal)
             tileOn.groundtype = Groundtype.Soaked;
         tileOn.obstacle = null;
+        
         Destroy(gameObject);
     }
 
@@ -25,4 +26,9 @@ public class IceBlock : Obstacle
     }
 
     public override void Tick() {}
+
+    private void OnDestroy()
+    {
+        AudioManager.Instance.PlaySFX("melting_ice");
+    }
 }

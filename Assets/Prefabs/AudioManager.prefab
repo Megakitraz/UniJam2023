@@ -330,7 +330,7 @@ MonoBehaviour:
   - name: push_crate
     clip: {fileID: 8300000, guid: eb733cd6218bcbc4d83dfdb8c4efde04, type: 3}
   - name: mage_walk
-    clip: {fileID: 8300000, guid: c7d97cb11d3f36842877b7fafb165d01, type: 3}
+    clip: {fileID: 8300000, guid: 5611d9e714334fb4fa942256b2efb32f, type: 3}
   loopSfxSounds:
   - name: idle_taureau
     clip: {fileID: 8300000, guid: 15afb1a429ba8a643a71f54af63a9cde, type: 3}

@@ -232,7 +232,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tileOn
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 856748420}
     - target: {fileID: 7452831404925222938, guid: 6a6ef2a074e95204598ba9b15fbcb478,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -867,6 +867,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6ef2a074e95204598ba9b15fbcb478, type: 3}
+--- !u!114 &856748420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5533824086487485924, guid: 40c8c226ff78c974fb13853e79c65844,
+    type: 3}
+  m_PrefabInstance: {fileID: 1690720178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eac5607e89f864a922155ef1eb6f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &995482308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1744,6 +1756,11 @@ PrefabInstance:
       propertyPath: obstacle
       value: 
       objectReference: {fileID: 559785572}
+    - target: {fileID: 3117993603594792209, guid: 40c8c226ff78c974fb13853e79c65844,
+        type: 3}
+      propertyPath: _groundtype
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3586791066033557152, guid: 40c8c226ff78c974fb13853e79c65844,
         type: 3}
       propertyPath: _groundtype

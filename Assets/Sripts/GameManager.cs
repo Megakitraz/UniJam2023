@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ActionManager actionManager;
     [SerializeField] public MovementSystem movementSystem;
     public static bool playerCanPlay;
-    private int currentLevel = 0 ;
+    public int currentLevel = 1 ;
     private int maxLevel = 10 ;
-    private float turnDelay  = 0.2f;
+    public float turnDelay  = 0.1f;
 
     void Awake()
     {
@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name != "TitleScreen" && scene.name != "Cinematic")
+        {
         Debug.Log(1);
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         Debug.Log(2);
@@ -58,6 +60,10 @@ public class GameManager : MonoBehaviour
         PauseScreen.Instance.gameObject.SetActive(false);
         Debug.Log(7);
         StartTurn();
+        }
+        PauseScreen.Instance.gameObject.SetActive(false);
+        Debug.Log(7);
+        
     }
 
     void Start()
@@ -90,13 +96,18 @@ public class GameManager : MonoBehaviour
 
     public void StartTurn()
     {
+        Invoke("StartTurnAux2", 0.1f);
+    }
+
+    public void StartTurnAux2()
+    {
         Invoke("StartTurnAux", turnDelay);
     }
 
     public void StartTurnAux()
     {
         Debug.Log("Start turn");
-        turnDelay = 0.2f;
+        turnDelay = 0.1f;
         //actionManager.selectedUnit = null;
         actionManager.HandleUnitSelected(player.gameObject);
         TryWin();

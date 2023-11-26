@@ -30,7 +30,7 @@ public class MovementSystem : MonoBehaviour
     public void ShowRange(Unit unit)
     {
         CalculateRange(unit);
-        foreach (Vector3Int tilePosition in movementRange.GetRangePositions())
+        foreach (Vector3Int tilePosition in grid.GetNeighborsFor(unit.tileOn.tileCoords))
         {   
             Tile tile = grid.GetTileAt(tilePosition);
             if (unit.tileOn != tile)
@@ -55,7 +55,7 @@ public class MovementSystem : MonoBehaviour
         {
             foreach (Vector3Int tilePos in currentPath)
             {
-                grid.GetTileAt(tilePos).EnableHighlight1();
+                //grid.GetTileAt(tilePos).EnableHighlight1();
             }
             currentPath = movementRange.GetPathTo(selectedTilePos);
             foreach (Vector3Int tilePos in currentPath)
@@ -100,6 +100,7 @@ public class MovementSystem : MonoBehaviour
             yield return new WaitForSeconds(t);
             grid.Tick();
         } 
+        GameManager.Instance.StartTurn();
     }
     
 

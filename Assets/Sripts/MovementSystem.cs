@@ -67,39 +67,30 @@ public class MovementSystem : MonoBehaviour
 
     public IEnumerator MoveUnit(Player unit)
     {
+        bool checkSlippery = true;
         Vector3Int baseCoord = unit.tileOn.tileCoords;
-        unit.tileOn.unit = null;
         Vector3Int endOfPath = currentPath[currentPath.Count - 1];
         Vector3Int dir = endOfPath - unit.tileOn.tileCoords;
-        grid.GetTileAt(endOfPath).unit = unit;
         Tile target = grid.GetTileAt(endOfPath);
-        unit.tileOn = target;
-        if (target.obstacle != null)
-        {
-            TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
-        }
-        StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
-        unit.tileOn = grid.GetTileAt(endOfPath);
         float t = 1.0f/unit.movSpeed;
-        yield return new WaitForSeconds(t);
-        grid.Tick();
         if (target.IsMovableOn(target.tileCoords - unit.tileOn.tileCoords))
         {
             baseCoord = unit.tileOn.tileCoords;
             unit.tileOn.unit = null;
             unit.tileOn = target;
             unit.tileOn.unit = unit;
-            StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+            StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
             if (target.obstacle != null)
             {
                 TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
-            }
+                checkSlippery = false;
 
+            }
             yield return new WaitForSeconds(t);
             grid.Tick();
         }
 
-        while (unit.tileOn.IsSlippery())
+        while (unit.tileOn.IsSlippery() && checkSlippery)
         { 
             target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
             if (target == null) break;

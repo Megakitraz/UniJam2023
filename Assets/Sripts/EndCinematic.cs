@@ -23,8 +23,8 @@ public class EndCinematic : MonoBehaviour
         Invoke("BlackUnfade", fadeDuration * 4);
         Invoke("ChangeImage1", fadeDuration * 5);
         Invoke("BlackFade", fadeDuration * 5.2f);
-        Invoke("BlackUnfade", fadeDuration * 10f);
-        Invoke("LoadTitle", fadeDuration * 11f);
+        Invoke("BlackUnfade", fadeDuration * 18.8f);
+        Invoke("LoadTitle", fadeDuration * 20f);
     }
 
     void ChangeImage1()

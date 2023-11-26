@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public MovementSystem movementSystem;
     public static bool playerCanPlay;
     public int currentLevel = 1 ;
-    private int maxLevel = 10 ;
+    private int maxLevel = 7 ;
     public float turnDelay  = 0.1f;
 
     void Awake()
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "TitleScreen" && scene.name != "Cinematic")
+        if (scene.name != "TitleScreen" && scene.name != "Cinematic" && scene.name != "EndScene")
         {
         Debug.Log(1);
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -129,6 +129,10 @@ public class GameManager : MonoBehaviour
         if (currentLevel <= maxLevel)
         {
             SceneManager.LoadScene("Level" + currentLevel.ToString());
+        }
+        else 
+        {
+            SceneManager.LoadScene("EndScene");
         }
     }
 

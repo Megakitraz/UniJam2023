@@ -312,6 +312,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4d8142cd4508ac942a93b67eadc72fcd, type: 3}
   - name: menu
     clip: {fileID: 8300000, guid: 4929045b51d7859408e34bf0b168537c, type: 3}
+  - name: musicIntro
+    clip: {fileID: 8300000, guid: 65bcb30d7a5fe9b418549c78dc310248, type: 3}
+  - name: musicLevel4
+    clip: {fileID: 8300000, guid: fc91233fd0a0a6a4b9d35a46306741c5, type: 3}
   sfxSounds:
   - name: feu_vegetation
     clip: {fileID: 8300000, guid: 706f4a946c023404cac32d84e82e21f7, type: 3}

@@ -355,6 +355,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0b9fe003ca69a6140a426ef0ae6daf7d, type: 3}
   - name: melting_ice
     clip: {fileID: 8300000, guid: 5e3acec1891f9454eb01f52099ca2dc2, type: 3}
+  - name: death
+    clip: {fileID: 8300000, guid: 3892f014d4fda83479264d892fc3432b, type: 3}
   loopSfxSounds:
   - name: idle_taureau
     clip: {fileID: 8300000, guid: 65683e87892852a43885a8fd719a1f90, type: 3}

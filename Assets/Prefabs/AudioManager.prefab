@@ -318,7 +318,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fc91233fd0a0a6a4b9d35a46306741c5, type: 3}
   sfxSounds:
   - name: feu_vegetation
-    clip: {fileID: 8300000, guid: 706f4a946c023404cac32d84e82e21f7, type: 3}
+    clip: {fileID: 8300000, guid: 0bb54ba28e738c144b493b690ab3cbcf, type: 3}
   - name: click1
     clip: {fileID: 8300000, guid: 4a4f5937f13b449429881fee0b819f1b, type: 3}
   - name: click1_reverb

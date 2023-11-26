@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         }
         PauseScreen.Instance.gameObject.SetActive(false);
         Debug.Log(7);
+        LoadSound(scene);
         
     }
 
@@ -131,29 +132,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
+    private void LoadSound(Scene scene)
     {
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.StopSFX();
         AudioManager.Instance.StopSFXLoop();
 
-        if(SceneManager.GetSceneByName("TitleScreen").buildIndex == level)
+        if(scene.name == "TitleScreen")
         {
             AudioManager.Instance.PlayMusic("menu");
         }
-        else if(SceneManager.GetSceneByName("Cinematic").buildIndex == level)
+        else if(scene.name == "Cinematic")
         {
             AudioManager.Instance.PlayMusic("musicIntro");
         }
-        else if(SceneManager.GetSceneByName("Level1").buildIndex == level)
+        else if(scene.name == "Level1")
         {
             AudioManager.Instance.PlayMusic("musicLevel1");
         }
-        else if (SceneManager.GetSceneByName("Level2").buildIndex == level)
+        else if (scene.name == "Level2")
         {
             AudioManager.Instance.PlayMusic("musicLevel2");
         }
-        else if(SceneManager.GetSceneByName("Level3").buildIndex == level)
+        else if(scene.name == "Level3")
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
         }

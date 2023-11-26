@@ -14,6 +14,7 @@ public class IntroCinematic : MonoBehaviour
 
     void Start()
     {
+        AudioManager.Instance.PlayMusic("musicIntro");
         blackFade.durationOfFade = fadeDuration;
         introImage.durationOfFade = fadeDuration;
         blackFade.Show();

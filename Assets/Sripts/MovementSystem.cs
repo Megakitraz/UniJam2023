@@ -151,7 +151,7 @@ public class MovementSystem : MonoBehaviour
                     yield return null;
                 }
 
-                while (target.IsReachable())
+                while (target != null && target.IsReachable())
                 {
                     if (target.IsPlayerOnTile())
                     {

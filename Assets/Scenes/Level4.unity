@@ -981,6 +981,11 @@ PrefabInstance:
       propertyPath: obstacle
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3018748188252774493, guid: 40c8c226ff78c974fb13853e79c65844,
+        type: 3}
+      propertyPath: _groundtype
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3246314959377528479, guid: 40c8c226ff78c974fb13853e79c65844,
         type: 3}
       propertyPath: unit

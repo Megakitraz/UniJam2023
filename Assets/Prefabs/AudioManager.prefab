@@ -357,7 +357,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5e3acec1891f9454eb01f52099ca2dc2, type: 3}
   loopSfxSounds:
   - name: idle_taureau
-    clip: {fileID: 8300000, guid: 15afb1a429ba8a643a71f54af63a9cde, type: 3}
+    clip: {fileID: 8300000, guid: c996980adb0f4014eae61bdbef6c6749, type: 3}
   musicSource: {fileID: 2170221197272934428}
   sfxSource: {fileID: 4252016444157831202}
   loopSfxSource: {fileID: 6444762986680372709}

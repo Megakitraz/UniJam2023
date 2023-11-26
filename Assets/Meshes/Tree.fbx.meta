@@ -14,6 +14,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Tronc
     second: {fileID: 2100000, guid: 2a8045d5ba6a066418145cc67e3926f9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Leaf Base Color
+    second: {fileID: 2800000, guid: 67eb2e76a6a649646b1c79852d4e41c1, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

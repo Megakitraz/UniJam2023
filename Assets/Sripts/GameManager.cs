@@ -137,19 +137,23 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.StopSFX();
         AudioManager.Instance.StopSFXLoop();
 
-        if(level == 0)
+        if(SceneManager.GetSceneByName("TitleScreen").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("menu");
         }
-        else if(level == 1)
+        else if(SceneManager.GetSceneByName("Cinematic").buildIndex == level)
+        {
+            AudioManager.Instance.PlayMusic("musicIntro");
+        }
+        else if(SceneManager.GetSceneByName("Level1").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("musicLevel1");
         }
-        else if(level == 2)
+        else if (SceneManager.GetSceneByName("Level2").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("musicLevel2");
         }
-        else if (level == 3)
+        else if(SceneManager.GetSceneByName("Level3").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
         }

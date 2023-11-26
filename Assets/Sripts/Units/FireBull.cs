@@ -16,7 +16,7 @@ public class FireBull : Unit
     // Start is called before the first frame update
     void Start()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.PlayLoopSFX("idle_taureau");
+        AudioManager.Instance.PlayLoopSFX("idle_taureau");
         HideIndicator();
         
     }
@@ -35,6 +35,7 @@ public class FireBull : Unit
     public void ShowIndicator()
     {
         exclamationMark.SetActive(true);
+        AudioManager.Instance.PlaySFX("trigg_taureau");
     }
 
     public void HideIndicator()
@@ -122,7 +123,7 @@ public class FireBull : Unit
         if (isEnraged)
         {
             ShowIndicator();
-            AudioManager.Instance.PlaySFX("taureautrigg");
+            //AudioManager.Instance.PlaySFX("taureautrigg");
         }
     }
 

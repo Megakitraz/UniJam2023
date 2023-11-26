@@ -126,27 +126,14 @@ public abstract class Unit : MonoBehaviour
 
     public void PlayStopBullSounds(bool isPlay)
     {
-
-        if (isPlay)
+        if (_animatorFireBull != null)
         {
-            if (_animatorFireBull != null)
-            {
-
-                Debug.Log("Debut Animation");
-                _animatorFireBull.SetBool("Run", true);
-                AudioManager.Instance.PlayLoopSFX("course_taureau");
-                AudioManager.Instance.PlaySFX("feu_taureau");
-            }
-        }
-        else
-        {
-            if (_animatorFireBull != null)
-            {
-                Debug.Log("Fin Animation");
-                _animatorFireBull.SetBool("Run", false);
-                AudioManager.Instance.StopSFX();
-                AudioManager.Instance.StopSFXLoop();
-            }
+            Debug.Log("Debut Animation");
+            //_animatorFireBull.SetBool("Run", true);
+            AudioManager.Instance.StopSFXLoop();
+            _animatorFireBull.SetTrigger("RUN");
+            //AudioManager.Instance.PlaySFX("course_taureau");
+            //AudioManager.Instance.PlaySFX("feu_taureau");
         }
 
         

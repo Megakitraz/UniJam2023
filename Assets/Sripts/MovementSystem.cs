@@ -67,42 +67,40 @@ public class MovementSystem : MonoBehaviour
 
     public IEnumerator MoveUnit(Player unit)
     {
+        bool checkSlippery = true;
         Vector3Int baseCoord = unit.tileOn.tileCoords;
-        unit.tileOn.unit = null;
         Vector3Int endOfPath = currentPath[currentPath.Count - 1];
         Vector3Int dir = endOfPath - unit.tileOn.tileCoords;
-        grid.GetTileAt(endOfPath).unit = unit;
         Tile target = grid.GetTileAt(endOfPath);
-        unit.tileOn = target;
-        if (target.obstacle != null)
-        {
-            TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
-        }
-        StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
-        unit.tileOn = grid.GetTileAt(endOfPath);
         float t = 1.0f/unit.movSpeed;
-        yield return new WaitForSeconds(t);
-        grid.Tick();
-        while (unit.tileOn.IsSlippery())
+        if (target.IsMovableOn(target.tileCoords - unit.tileOn.tileCoords))
+        {
+            baseCoord = unit.tileOn.tileCoords;
+            unit.tileOn.unit = null;
+            unit.tileOn = target;
+            unit.tileOn.unit = unit;
+            StartCoroutine(unit.RotationCoroutine(unit.tileOn.transform.position));
+            if (target.obstacle != null)
+            {
+                TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
+                checkSlippery = false;
+
+            }
+            yield return new WaitForSeconds(t);
+            grid.Tick();
+        }
+
+        while (unit.tileOn.IsSlippery() && checkSlippery)
         { 
             target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
             if (target == null) break;
-            if (target.IsMovableOn(target.tileCoords - unit.tileOn.tileCoords))
-            {
-                baseCoord = unit.tileOn.tileCoords;
-                unit.tileOn.unit = null;
-                unit.tileOn = target;
-                unit.tileOn.unit = unit;
-                StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
-                if (target.obstacle != null)
-                {
-                    TryMoveAnObstacle(target.obstacle, target.tileCoords + target.tileCoords - baseCoord);
-                }
-                yield return new WaitForSeconds(t);
-                grid.Tick();
-            }
-        }
-        GameManager.Instance.StartTurn();
+            unit.tileOn.unit = null;
+            unit.tileOn = target;
+            unit.tileOn.unit = unit;
+            StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
+
+            
+        } 
     }
     
 
@@ -121,9 +119,9 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
-    public void MoveEntity(Unit unit, Vector3Int destTilePos)
+    public IEnumerator MoveEntity(Unit unit, Vector3Int destTilePos)
     {
-        
+        float t = 1.0f/unit.movSpeed;
 
         Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
         if (grid.GetTileAt(destTilePos) != null)
@@ -134,25 +132,27 @@ public class MovementSystem : MonoBehaviour
             unit.tileOn.unit = null;
             unit.tileOn = destTile;
             destTile.unit = unit;
-            unit.ApplyEffectOnNeighbor();
             StartCoroutine(unit.MovementCoroutine(destTile.transform.position));
+            yield return new WaitForSeconds(2*t);
+            unit.ApplyEffectOnNeighbor();
             if (unit.GetComponent<FireBull>() != null)
             {
                 var target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
                 if (target == null)
                 {
                     unit.PlayStopBullSounds(false);
-                    return;
+                    yield return null;
                 }
                 while (target.IsReachable())
                 {   
                     unit.tileOn.unit = null;
                     unit.tileOn = target;
                     target.unit = unit;
-                    unit.ApplyEffectOnNeighbor();
                     StartCoroutine(unit.MovementCoroutine(target.transform.position));
+                    yield return new WaitForSeconds(2*t);
+                    unit.ApplyEffectOnNeighbor();
                     target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
-                    if (target == null) return;
+                    if (target == null) break;
                 }
 
                 unit.PlayStopBullSounds(false);

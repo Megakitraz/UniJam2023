@@ -71,7 +71,7 @@ public class FireBull : Unit
             }
             //if (AudioManager.Instance != null) AudioManager.Instance.PlayLoopSFX("course_taureau");
             //if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("feu_taureau");
-            movementSystem.MoveEntity(this,coords);
+            StartCoroutine(movementSystem.MoveEntity(this,coords));
             isEnraged = false;
             
 

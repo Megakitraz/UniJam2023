@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,20 @@ public class Tree : Obstacle
     [SerializeField]
     private int burnTime;
 
+    private List<ParticleSystem> particleSystems;
+
+    public void Start()
+    {
+        particleSystems = new List<ParticleSystem>(GetComponentsInChildren<ParticleSystem>());
+    }
+
     public override void ApplyHeat()
     {
         isBurning = true;
+        foreach (ParticleSystem system in particleSystems)
+        {
+            system.Play();
+        }
     }
 
     public override void ApplyCold() {}
@@ -34,9 +46,11 @@ public class Tree : Obstacle
                 tile.ApplyHeat();
             }
 
-            tileOn.obstacle = null;
-            if(burnTime < 0)
+            if (burnTime < 0)
+            {
+                tileOn.obstacle = null;
                 Destroy(gameObject);
+            }
         }
     }
 }

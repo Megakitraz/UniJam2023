@@ -72,6 +72,6 @@ public class Player : Unit
 
         transform.position = endPosition;
         MovementFinished?.Invoke(this);
-        GameManager.Instance.StartTurn();
+        //GameManager.Instance.StartTurn();
     }
 }

@@ -172,6 +172,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &57179109
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8323992
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1631696
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32450944
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.41854626
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450114260645112415, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 969663864124125413, guid: 27ea433b11d79e14891cbc08c5050f35,
+        type: 3}
+      propertyPath: m_Name
+      value: Witcher.1.0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27ea433b11d79e14891cbc08c5050f35, type: 3}
 --- !u!1001 &67720374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -512,74 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ffb069313fe6e449a072fee445ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &165313981
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8323992
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.1631696
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.32450944
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.41854626
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -42.597
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155920320962258863, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -53.388
-      objectReference: {fileID: 0}
-    - target: {fileID: 5532200015522184469, guid: 5345d6a3062968f47a1a3030dd96dc2e,
-        type: 3}
-      propertyPath: m_Name
-      value: Witcher (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5345d6a3062968f47a1a3030dd96dc2e, type: 3}
 --- !u!1001 &218205406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1723,6 +1723,8 @@ MonoBehaviour:
   player: {fileID: 1386025795}
   actionManager: {fileID: 1231535293}
   movementSystem: {fileID: 1437642209}
+  currentLevel: 1
+  turnDelay: 0.1
 --- !u!4 &1063813748
 Transform:
   m_ObjectHideFlags: 0
@@ -2905,6 +2907,7 @@ SceneRoots:
   - {fileID: 513218097}
   - {fileID: 1386025794}
   - {fileID: 606734057}
+  - {fileID: 57179109}
   - {fileID: 567882213}
   - {fileID: 1272563170}
   - {fileID: 527476664}
@@ -2923,4 +2926,3 @@ SceneRoots:
   - {fileID: 1940840784}
   - {fileID: 107983421}
   - {fileID: 1987763714}
-  - {fileID: 165313981}

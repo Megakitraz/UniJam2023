@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovementSystem : MonoBehaviour
 {
@@ -143,6 +144,7 @@ public class MovementSystem : MonoBehaviour
                     unit.PlayStopBullSounds(false);
                     yield return null;
                 }
+
                 while (target.IsReachable())
                 {   
                     unit.tileOn.unit = null;
@@ -153,6 +155,11 @@ public class MovementSystem : MonoBehaviour
                     unit.ApplyEffectOnNeighbor();
                     target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
                     if (target == null) break;
+                }
+                if (target != null && target.unit == player)
+                {
+                    Scene scene = SceneManager.GetActiveScene();
+                    SceneManager.LoadScene(scene.name);
                 }
 
                 unit.PlayStopBullSounds(false);

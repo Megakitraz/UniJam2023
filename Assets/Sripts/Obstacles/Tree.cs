@@ -19,6 +19,7 @@ public class Tree : Obstacle
     public override void ApplyHeat()
     {
         isBurning = true;
+        AudioManager.Instance.PlaySFX("feu_vegetation");
         foreach (ParticleSystem system in particleSystems)
         {
             system.Play();

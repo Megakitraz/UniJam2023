@@ -307,7 +307,7 @@ MonoBehaviour:
   - name: musicLevel1
     clip: {fileID: 8300000, guid: d4a163c77755ef745aff299dc2f0a77d, type: 3}
   - name: musicLevel2
-    clip: {fileID: 8300000, guid: 40dd4fcdb5107444daa6cf2de6491c18, type: 3}
+    clip: {fileID: 8300000, guid: 95b87da973f6c144da8d898c9a57e6a2, type: 3}
   - name: musicLevel3
     clip: {fileID: 8300000, guid: 4d8142cd4508ac942a93b67eadc72fcd, type: 3}
   - name: menu

@@ -1698,6 +1698,8 @@ MonoBehaviour:
   player: {fileID: 2053302694}
   actionManager: {fileID: 1298381224}
   movementSystem: {fileID: 1159444760}
+  currentLevel: 1
+  turnDelay: 0.1
 --- !u!4 &1671777639
 Transform:
   m_ObjectHideFlags: 0
@@ -1739,7 +1741,7 @@ PrefabInstance:
     - target: {fileID: 1357391153920615566, guid: 40c8c226ff78c974fb13853e79c65844,
         type: 3}
       propertyPath: _groundtype
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2584875844516821592, guid: 40c8c226ff78c974fb13853e79c65844,
         type: 3}

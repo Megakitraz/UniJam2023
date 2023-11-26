@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ActionManager actionManager;
     [SerializeField] public MovementSystem movementSystem;
     public static bool playerCanPlay;
-    private int currentLevel = 0 ;
+    public int currentLevel = 1 ;
     private int maxLevel = 10 ;
+    public float turnDelay  = 0.1f;
 
     void Awake()
     {
@@ -43,19 +44,32 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name != "TitleScreen" && scene.name != "Cinematic")
+        {
+        Debug.Log(1);
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        Debug.Log(2);
         player = GameObject.Find("Player").GetComponent<Unit>();
+        Debug.Log(3);
         actionManager = GameObject.Find("ActionManager").GetComponent<ActionManager>();
+        Debug.Log(4);
         movementSystem = GameObject.Find("MovementSystem").GetComponent<MovementSystem>();
+        Debug.Log(5);
         movementSystem.grid.InitGrid();
+        Debug.Log(6);
         PauseScreen.Instance.gameObject.SetActive(false);
+        Debug.Log(7);
         StartTurn();
+        }
+        PauseScreen.Instance.gameObject.SetActive(false);
+        Debug.Log(7);
+        
     }
 
     void Start()
     {
         movementSystem.grid.InitGrid();
-        StartTurn();
+        StartTurnAux();
     }
     void Update()
     {
@@ -82,8 +96,18 @@ public class GameManager : MonoBehaviour
 
     public void StartTurn()
     {
+        Invoke("StartTurnAux2", 0.1f);
+    }
+
+    public void StartTurnAux2()
+    {
+        Invoke("StartTurnAux", turnDelay);
+    }
+
+    public void StartTurnAux()
+    {
         Debug.Log("Start turn");
-        
+        turnDelay = 0.1f;
         //actionManager.selectedUnit = null;
         actionManager.HandleUnitSelected(player.gameObject);
         TryWin();
@@ -113,19 +137,23 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.StopSFX();
         AudioManager.Instance.StopSFXLoop();
 
-        if(level == 0)
+        if(SceneManager.GetSceneByName("TitleScreen").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("menu");
         }
-        else if(level == 1)
+        else if(SceneManager.GetSceneByName("Cinematic").buildIndex == level)
+        {
+            AudioManager.Instance.PlayMusic("musicIntro");
+        }
+        else if(SceneManager.GetSceneByName("Level1").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("musicLevel1");
         }
-        else if(level == 2)
+        else if (SceneManager.GetSceneByName("Level2").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("musicLevel2");
         }
-        else if (level == 3)
+        else if(SceneManager.GetSceneByName("Level3").buildIndex == level)
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
         }

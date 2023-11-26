@@ -28,6 +28,7 @@ public class PauseScreen : MonoBehaviour
     public void BackToTitleScreen()
     {
         GameManager.Instance.Pause();
+         GameManager.Instance.currentLevel = 1;
         SceneManager.LoadScene(0);
     }
 

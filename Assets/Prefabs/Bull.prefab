@@ -51,7 +51,7 @@ MonoBehaviour:
   maxMP: 1
   tileOn: {fileID: 0}
   _animatorFireBull: {fileID: 5095985980279399625}
-  movSpeed: 5
+  movSpeed: 10
   rotSpeed: 3
   direction: 3
   exclamationMark: {fileID: 8322725864632685076}

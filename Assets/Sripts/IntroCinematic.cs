@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class IntroCinematic : MonoBehaviour
@@ -9,7 +10,7 @@ public class IntroCinematic : MonoBehaviour
     public UIElement introImage;
     public Sprite intro1;
     public Sprite intro2;
-    public float fadeDuration = 5;
+    public float fadeDuration;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class IntroCinematic : MonoBehaviour
         Invoke ("ChangeImage1", fadeDuration * 5 );
         Invoke("BlackFade", fadeDuration * 5.2f );
         Invoke("BlackUnfade", fadeDuration * 8f );
+        Invoke("LoadLevel1", fadeDuration * 9.2f );
 
 
     }   
@@ -30,6 +32,11 @@ public class IntroCinematic : MonoBehaviour
     void ChangeImage1()
     {
         introImage.ChangeImage(intro2);
+    }
+
+    void LoadLevel1()
+    {
+        SceneManager.LoadScene("Level1");
     }
 
     void ImageFade()

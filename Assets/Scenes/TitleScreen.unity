@@ -375,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayPanel: {fileID: 862236184}
   OptionPanel: {fileID: 1643887017}
+  QuitButton: {fileID: 1436934314}
 --- !u!1 &228508841
 GameObject:
   m_ObjectHideFlags: 0

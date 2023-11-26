@@ -8,6 +8,7 @@ public class TitleScreen : MonoBehaviour
 {
     [SerializeField] GameObject PlayPanel;
     [SerializeField] GameObject OptionPanel;
+    [SerializeField] GameObject QuitButton;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class TitleScreen : MonoBehaviour
         DisplayTitleScreen();
         AudioManager.Instance.PlayMusic("menu");
         PauseScreen.Instance.gameObject.SetActive(false);
+        if (Application.platform == RuntimePlatform.WebGLPlayer) QuitButton.SetActive(false);
     }
 
 

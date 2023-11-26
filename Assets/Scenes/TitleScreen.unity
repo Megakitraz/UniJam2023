@@ -2845,36 +2845,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: musicSounds.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[18].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5e3acec1891f9454eb01f52099ca2dc2, type: 3}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[18].name
-      value: melting_ice
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: musicSounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fc91233fd0a0a6a4b9d35a46306741c5, type: 3}
-    - target: {fileID: 2253381194770055489, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
-        type: 3}
-      propertyPath: musicSounds.Array.data[5].name
-      value: musicLevel4
-      objectReference: {fileID: 0}
     - target: {fileID: 3694336025163683719, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c,
         type: 3}
       propertyPath: m_Name

@@ -318,7 +318,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fc91233fd0a0a6a4b9d35a46306741c5, type: 3}
   sfxSounds:
   - name: feu_vegetation
-    clip: {fileID: 8300000, guid: 706f4a946c023404cac32d84e82e21f7, type: 3}
+    clip: {fileID: 8300000, guid: 0bb54ba28e738c144b493b690ab3cbcf, type: 3}
   - name: click1
     clip: {fileID: 8300000, guid: 4a4f5937f13b449429881fee0b819f1b, type: 3}
   - name: click1_reverb
@@ -355,9 +355,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0b9fe003ca69a6140a426ef0ae6daf7d, type: 3}
   - name: melting_ice
     clip: {fileID: 8300000, guid: 5e3acec1891f9454eb01f52099ca2dc2, type: 3}
+  - name: death
+    clip: {fileID: 8300000, guid: 3892f014d4fda83479264d892fc3432b, type: 3}
   loopSfxSounds:
   - name: idle_taureau
-    clip: {fileID: 8300000, guid: c996980adb0f4014eae61bdbef6c6749, type: 3}
+    clip: {fileID: 8300000, guid: 65683e87892852a43885a8fd719a1f90, type: 3}
   musicSource: {fileID: 2170221197272934428}
   sfxSource: {fileID: 4252016444157831202}
   loopSfxSource: {fileID: 6444762986680372709}

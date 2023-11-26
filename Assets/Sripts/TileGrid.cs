@@ -129,7 +129,7 @@ public class TileGrid : MonoBehaviour
             if (tileNeighborsDict.ContainsKey(tile.tileCoords) == false)
             {
                 tileNeighborsDict.Add(tile.tileCoords, new List<Vector3Int>());
-                foreach (var direction in Direction.directionsOffset)
+                foreach (var direction in GridDirection.directionsOffset)
                 {
                     if (tileDict.ContainsKey(tile.tileCoords + direction))
                     {
@@ -209,7 +209,7 @@ public class TileGrid : MonoBehaviour
 }
 
 
-public static class Direction
+public static class GridDirection
 {
     public static List<Vector3Int> directionsOffset = new List<Vector3Int>
     {

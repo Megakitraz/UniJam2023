@@ -5,24 +5,11 @@ using static System.Math ;
 
 public class TileGrid : MonoBehaviour
 {
-    private static TileGrid instance = null;
-    public static TileGrid Instance => instance;
-
     Dictionary<Vector3Int, Tile> tileDict = new Dictionary<Vector3Int, Tile>();
     Dictionary<Vector3Int, List<Vector3Int>> tileNeighborsDict = new Dictionary<Vector3Int, List<Vector3Int>>();
     List<List<Vector3Int>> tileRow = new List<List<Vector3Int>>(); 
     List<List<Vector3Int>> tileColumn = new List<List<Vector3Int>>(); 
 
-
-    void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        instance = this;
-        DontDestroyOnLoad(this);
-    }
 
     public void InitGrid()
     {

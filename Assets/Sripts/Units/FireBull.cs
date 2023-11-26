@@ -152,7 +152,7 @@ public class FireBull : Unit
             break;
             }
             Debug.Log(coords);
-            Tile tile = TileGrid.Instance.GetTileAt(coords);
+            Tile tile = GameManager.Instance.movementSystem.grid.GetTileAt(coords);
             if (tile != null)
             {
                 if (tile.IsPlayerOnTile())

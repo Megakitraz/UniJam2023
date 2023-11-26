@@ -119,9 +119,9 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
-    public void MoveEntity(Unit unit, Vector3Int destTilePos)
+    public IEnumerator MoveEntity(Unit unit, Vector3Int destTilePos)
     {
-        
+        float t = 1.0f/unit.movSpeed;
 
         Vector3Int dir = destTilePos - unit.tileOn.tileCoords;
         if (grid.GetTileAt(destTilePos) != null)
@@ -132,25 +132,27 @@ public class MovementSystem : MonoBehaviour
             unit.tileOn.unit = null;
             unit.tileOn = destTile;
             destTile.unit = unit;
-            unit.ApplyEffectOnNeighbor();
             StartCoroutine(unit.MovementCoroutine(destTile.transform.position));
+            yield return new WaitForSeconds(2*t);
+            unit.ApplyEffectOnNeighbor();
             if (unit.GetComponent<FireBull>() != null)
             {
                 var target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
                 if (target == null)
                 {
                     unit.PlayStopBullSounds(false);
-                    return;
+                    yield return null;
                 }
                 while (target.IsReachable())
                 {   
                     unit.tileOn.unit = null;
                     unit.tileOn = target;
                     target.unit = unit;
-                    unit.ApplyEffectOnNeighbor();
                     StartCoroutine(unit.MovementCoroutine(target.transform.position));
+                    yield return new WaitForSeconds(2*t);
+                    unit.ApplyEffectOnNeighbor();
                     target = grid.GetTileAt(unit.tileOn.tileCoords + dir);
-                    if (target == null) return;
+                    if (target == null) break;
                 }
 
                 unit.PlayStopBullSounds(false);

@@ -65,7 +65,7 @@ MonoBehaviour:
   tileCoordinates: {fileID: 0}
   tileCost: 1
   tileMaterials:
-  - {fileID: 2100000, guid: 6dbbb8ac4e7d8ea4ea5d07ab98770a73, type: 2}
+  - {fileID: 2100000, guid: 736bc0ccea5397242978a61e4c6f06ee, type: 2}
   - {fileID: 2100000, guid: 29ce95a5fcfc21841834788d37d7a932, type: 2}
   - {fileID: 2100000, guid: c05f6746f27ed8145baf6ab194b06838, type: 2}
   - {fileID: 2100000, guid: 7857058e5b78cb8498478c2e45aff4bf, type: 2}

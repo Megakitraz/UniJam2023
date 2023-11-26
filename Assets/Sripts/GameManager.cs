@@ -21,17 +21,63 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (Instance != null && Instance != this)
-            Destroy(gameObject);    
-        Instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         playerCanPlay = true;
-        
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        player = GameObject.Find("Player").GetComponent<Unit>();
+        actionManager = GameObject.Find("ActionManager").GetComponent<ActionManager>();
+        movementSystem = GameObject.Find("MovementSystem").GetComponent<MovementSystem>();
+        movementSystem.grid.InitGrid();
+        PauseScreen.Instance.gameObject.SetActive(false);
+        StartTurn();
     }
 
     void Start()
     {
-        TileGrid.Instance.InitGrid();
+        movementSystem.grid.InitGrid();
         StartTurn();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
+    }
+
+    public void Pause()
+    {
+        if (playerCanPlay)
+        {
+            playerCanPlay = false;
+            Debug.Log(PauseScreen.Instance);
+            PauseScreen.Instance.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerCanPlay = true;
+            PauseScreen.Instance.gameObject.SetActive(false);
+        }
     }
 
     public void StartTurn()
@@ -69,9 +115,13 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlayMusic("musicLevel2");
         }
-        else
+        else if (level == 3)
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("musicLevel4");
         }
     }
 

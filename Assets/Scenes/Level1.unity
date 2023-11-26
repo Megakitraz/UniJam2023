@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -172,6 +172,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &132816755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4929899538993102928, guid: 40c8c226ff78c974fb13853e79c65844,
+    type: 3}
+  m_PrefabInstance: {fileID: 1273703602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eac5607e89f864a922155ef1eb6f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &321060595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,6 +192,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 482329133423817587, guid: 56250f0d1709cba4c862e0916375209c,
+        type: 3}
+      propertyPath: tileOn
+      value: 
+      objectReference: {fileID: 666744020}
     - target: {fileID: 7265438263749174784, guid: 56250f0d1709cba4c862e0916375209c,
         type: 3}
       propertyPath: m_Name
@@ -489,6 +506,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a3dc305abc51d44aab2ddc0c9f8cd4c, type: 3}
+--- !u!114 &666744020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4126794289147577911, guid: 40c8c226ff78c974fb13853e79c65844,
+    type: 3}
+  m_PrefabInstance: {fileID: 1273703602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eac5607e89f864a922155ef1eb6f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1055977273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1096,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 482329133423817587, guid: 56250f0d1709cba4c862e0916375209c,
+        type: 3}
+      propertyPath: tileOn
+      value: 
+      objectReference: {fileID: 132816755}
     - target: {fileID: 7265438263749174784, guid: 56250f0d1709cba4c862e0916375209c,
         type: 3}
       propertyPath: m_Name
@@ -1440,6 +1474,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1859784702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7836938475056096093, guid: 40c8c226ff78c974fb13853e79c65844,
+    type: 3}
+  m_PrefabInstance: {fileID: 1273703602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eac5607e89f864a922155ef1eb6f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7047384861708395874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1448,6 +1494,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 482329133423817587, guid: 56250f0d1709cba4c862e0916375209c,
+        type: 3}
+      propertyPath: tileOn
+      value: 
+      objectReference: {fileID: 1859784702}
     - target: {fileID: 7265438263749174784, guid: 56250f0d1709cba4c862e0916375209c,
         type: 3}
       propertyPath: m_Name

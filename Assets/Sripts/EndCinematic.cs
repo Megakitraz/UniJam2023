@@ -32,7 +32,7 @@ public class EndCinematic : MonoBehaviour
         introImage.ChangeImage(end2);
     }
 
-    void LoadTitle()
+    public void LoadTitle()
     {
         SceneManager.LoadScene("TitleScreen");
     }

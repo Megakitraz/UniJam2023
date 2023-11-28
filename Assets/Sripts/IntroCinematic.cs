@@ -28,15 +28,17 @@ public class IntroCinematic : MonoBehaviour
         Invoke("LoadLevel1", fadeDuration * 9.2f );
 
 
-    }   
+    }
+
 
     void ChangeImage1()
     {
         introImage.ChangeImage(intro2);
     }
 
-    void LoadLevel1()
+    public void LoadLevel1()
     {
+        
         SceneManager.LoadScene("Level1");
     }
 

@@ -70,7 +70,7 @@ public class ActionManager : MonoBehaviour
     //
     private void HandleTargetTileSelected(Tile selectedTile)
     {
-        if(previouslySelectedTile == null ||previouslySelectedTile != selectedTile)
+        if (previouslySelectedTile == null ||previouslySelectedTile != selectedTile)
         {
             previouslySelectedTile = selectedTile;
             movementSystem.ShowPath(selectedTile.tileCoords);

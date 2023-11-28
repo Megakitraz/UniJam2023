@@ -123,7 +123,6 @@ public class FireBull : Unit
         if (isEnraged)
         {
             ShowIndicator();
-            //AudioManager.Instance.PlaySFX("taureautrigg");
         }
     }
 

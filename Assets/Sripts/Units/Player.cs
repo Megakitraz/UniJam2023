@@ -8,6 +8,7 @@ public class Player : Unit
     
     public event Action<Player> MovementFinished;
     public Animator _animator;
+    [SerializeField] private GameObject _portalParticules;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,5 +74,10 @@ public class Player : Unit
         transform.position = endPosition;
         MovementFinished?.Invoke(this);
         //GameManager.Instance.StartTurn();
+    }
+
+    public void ActivateParticules()
+    {
+        _portalParticules.SetActive(true);
     }
 }

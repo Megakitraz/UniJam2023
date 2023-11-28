@@ -11,13 +11,17 @@ public class GameManager : MonoBehaviour
     public static int mana;
     public static List<Vector3Int> range;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] public Unit player;
+    [SerializeField] public Player player;
     [SerializeField] private ActionManager actionManager;
     [SerializeField] public MovementSystem movementSystem;
     public static bool playerCanPlay;
     public int currentLevel = 1 ;
     private int maxLevel = 9 ;
     public float turnDelay  = 0.1f;
+
+    private Coroutine _coroutineWin;
+    public bool _isWinning;
+    public bool _isDying;
 
     void Awake()
     {
@@ -31,6 +35,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
         playerCanPlay = true;
+
+        _isWinning = false;
+        _isDying = false;
     }
     void OnEnable()
     {
@@ -44,12 +51,13 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+
         if (scene.name != "TitleScreen" && scene.name != "Cinematic" && scene.name != "EndScene")
         {
         Debug.Log(1);
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         Debug.Log(2);
-        player = GameObject.Find("Player").GetComponent<Unit>();
+        player = GameObject.Find("Player").GetComponent<Player>();
         Debug.Log(3);
         actionManager = GameObject.Find("ActionManager").GetComponent<ActionManager>();
         Debug.Log(4);
@@ -110,8 +118,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start turn");
         turnDelay = 0.1f;
         //actionManager.selectedUnit = null;
-        actionManager.HandleUnitSelected(player.gameObject);
         TryWin();
+        actionManager.HandleUnitSelected(player.gameObject);
+        
     }
 
     void TryWin()
@@ -120,20 +129,36 @@ public class GameManager : MonoBehaviour
         Debug.Log(Groundtype.Portal);
         if(player.tileOn.groundtype == Groundtype.Portal)
         {
-            Win();
+            if (_isWinning) return;
+            _coroutineWin = StartCoroutine(Win());
         }
     }
-    void Win()
+    private IEnumerator Win()
     {
-        currentLevel ++;
-        if (currentLevel <= maxLevel)
+        if (!_isDying)
         {
-            SceneManager.LoadScene("Level" + currentLevel.ToString());
+            _isWinning = true;
+            Debug.Log("Win True");
+            currentLevel++;
+
+            player.ActivateParticules();
+            yield return new WaitForSeconds(1);
+            if(!_isDying)
+            {
+                if (currentLevel <= maxLevel)
+                {
+                    SceneManager.LoadScene("Level" + currentLevel.ToString());
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndScene");
+                }
+            }
+            
         }
-        else 
-        {
-            SceneManager.LoadScene("EndScene");
-        }
+        
+
+        _isWinning = false;
     }
 
     private void LoadSound(Scene scene)
@@ -181,6 +206,10 @@ public class GameManager : MonoBehaviour
         else if(scene.name == "Level7")
         {
             AudioManager.Instance.PlayMusic("musicLevel3");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("musicLevel2");
         }
     }
 

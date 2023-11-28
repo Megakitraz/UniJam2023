@@ -35,8 +35,11 @@ public class MovementSystem : MonoBehaviour
             Tile tile = grid.GetTileAt(tilePosition);
             if (unit.tileOn != tile)
             {
-                if(tile.IsMovableOn(tile.tileCoords - unit.tileOn.tileCoords))
-                 tile.EnableHighlight1();
+                if (tile.IsMovableOn(tile.tileCoords - unit.tileOn.tileCoords))
+                {
+                    tile.EnableHighlight1(); 
+                }
+                 
             }
             
         }
@@ -86,7 +89,7 @@ public class MovementSystem : MonoBehaviour
 
             }
             yield return new WaitForSeconds(t);
-            grid.Tick();
+            
         }
 
         while (unit.tileOn.IsSlippery() && checkSlippery)
@@ -98,8 +101,9 @@ public class MovementSystem : MonoBehaviour
             unit.tileOn.unit = unit;
             StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
             yield return new WaitForSeconds(t);
-            grid.Tick();
-        } 
+        }
+
+        grid.Tick();
         GameManager.Instance.StartTurn();
     }
     
@@ -129,7 +133,8 @@ public class MovementSystem : MonoBehaviour
         if (target != null && target.IsPlayerOnTile())
         {
             Debug.Log("A");
-            Invoke(nameof(KillPlayer), 0.5f);
+            //Invoke(nameof(KillPlayer), 0.5f);
+            StartCoroutine(KillPlayer());
         }
         if (target != null && target.IsReachable())
         {
@@ -156,7 +161,8 @@ public class MovementSystem : MonoBehaviour
                     if (target.IsPlayerOnTile())
                     {
                         Debug.Log("B");
-                        Invoke(nameof(KillPlayer), 0.5f);
+                        //Invoke(nameof(KillPlayer), 0.5f);
+                        StartCoroutine(KillPlayer());
                         break;
                     }
                     unit.tileOn.unit = null;
@@ -172,7 +178,8 @@ public class MovementSystem : MonoBehaviour
                 if (target != null && target.IsPlayerOnTile())
                 {
                     Debug.Log("C");
-                    Invoke(nameof(KillPlayer), 0.5f);
+                    //Invoke(nameof(KillPlayer), 0.5f);
+                    StartCoroutine(KillPlayer());
                 }
                
 
@@ -200,11 +207,14 @@ public class MovementSystem : MonoBehaviour
         }
     }
 
-    public void KillPlayer()
+    public IEnumerator KillPlayer()
     {
+        GameManager.Instance._isDying = true;
+        yield return new WaitForSeconds(0.3f);
         AudioManager.Instance.PlaySFX("death");
-
+        yield return new WaitForSeconds(1);
         Scene scene = SceneManager.GetActiveScene();
+        GameManager.Instance._isDying = false;
         SceneManager.LoadScene(scene.name);
     }
 

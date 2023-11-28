@@ -54,6 +54,13 @@ public class SelectionManager : MonoBehaviour
 
     private bool FindTarget(Vector3 mousePosition, out GameObject result)
     {
+        if (GameManager.Instance._isWinning || GameManager.Instance._isDying) {
+            result = null;
+            return false;
+        }
+        
+
+
         RaycastHit hit;
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
         if (Physics.Raycast(ray, out hit, 50f, selectionMask))

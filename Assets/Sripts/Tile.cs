@@ -32,6 +32,7 @@ public class Tile : MonoBehaviour
             if (_groundtype != value)
             {
                 _groundtype = value;
+
                 UpdateGroundModel();
             }
         }
@@ -148,7 +149,9 @@ public class Tile : MonoBehaviour
     }
 
     public void EnableHighlight1()
-    {           
+    {
+        Debug.Log("Is Winning : " + GameManager.Instance._isWinning + " | Is Dying : " + GameManager.Instance._isDying);
+        if (GameManager.Instance._isWinning || GameManager.Instance._isDying) return;
         renderer.material.SetColor("_EmissionColor",Color.grey);
         renderer.material.EnableKeyword("_Emission");
     }

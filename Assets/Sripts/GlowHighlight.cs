@@ -31,6 +31,7 @@ public class GlowHighlight : MonoBehaviour
 
     private void PrepareMaterialDictionaries()
     {
+
         foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
         {
             Material[] originalMaterials = renderer.materials;

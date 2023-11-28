@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public MovementSystem movementSystem;
     public static bool playerCanPlay;
     public int currentLevel = 1 ;
-    private int maxLevel = 7 ;
+    private int maxLevel = 9 ;
     public float turnDelay  = 0.1f;
 
     void Awake()

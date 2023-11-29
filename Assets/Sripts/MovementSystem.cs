@@ -89,7 +89,8 @@ public class MovementSystem : MonoBehaviour
 
             }
             yield return new WaitForSeconds(t);
-            
+            //grid.Tick();
+
         }
 
         while (unit.tileOn.IsSlippery() && checkSlippery)
@@ -101,6 +102,7 @@ public class MovementSystem : MonoBehaviour
             unit.tileOn.unit = unit;
             StartCoroutine(unit.MovementCoroutine(unit.tileOn.transform.position));
             yield return new WaitForSeconds(t);
+            //grid.Tick();
         }
 
         grid.Tick();
